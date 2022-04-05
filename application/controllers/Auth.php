@@ -91,27 +91,15 @@ class Auth extends CI_Controller
 
     public function registrasi()
     {
-        $data['ttd'] = '';
-        $ttd = $_FILES['ttd']['name'];
-        $config['upload_path'] = './upload';
-        $config['allowed_types'] = 'jpg|png|jpeg';
-        // $config['encrypt_name'] = true;
-        $this->load->library('upload', $config);
-        if (!$this->upload->do_upload('ttd')) {
-            echo 'gagal';
-        } else {
-            $ttd = $this->upload->data('file_name');
-            $data = [
-                'name' => $this->input->post('name', true),
-                'username' => $this->input->post('username', true),
-                'role_id' => $this->input->post('roles', true),
-                'password' => password_hash($this->input->post('password1', true), PASSWORD_DEFAULT),
-                'ttd' => $ttd
-            ];
-        }
+        $data = [
+            'name' => $this->input->post('name', true),
+            'username' => $this->input->post('username', true),
+            'role_id' => $this->input->post('roles', true),
+            'password' => password_hash($this->input->post('password1', true), PASSWORD_DEFAULT)
+        ];
         $this->session->set_flashdata('flash', 'ditambahkan');
         $this->db->insert('user', $data);
-        redirect('user');
+        redirect('User');
     }
 
     // app

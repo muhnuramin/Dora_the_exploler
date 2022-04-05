@@ -20,7 +20,6 @@
                             <th>Nama</th>
                             <th>Username</th>
                             <th>Roles</th>
-                            <th>TTD</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -32,7 +31,6 @@
                                 <td class="align-middle"><?= htmlentities($u->name) ?></td>
                                 <td class="align-middle"><?= htmlentities($u->username) ?></td>
                                 <td class="align-middle"><?= htmlentities($u->nama_role) ?></td>
-                                <td class="align-middle" scope="row"><img src="<?= base_url() ?>./upload/<?= $u->ttd ?>" width="100" height="100"></td>
                                 <td>
                                     <center>
                                         <div class="btn-group-vertical align-middle">

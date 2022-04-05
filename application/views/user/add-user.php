@@ -40,10 +40,6 @@
                             <input type="password" class="form-control" id="repeat-password" placeholder="Repeat Password" name="password2" required>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="ttd" class="form-label">Scan TTD <i>( .jpg, .png, .jpeg )</i></label>
-                        <input type="file" class="form-control" id="ttd" name="ttd">
-                    </div>
                     <button type="submit" class="btn btn-primary mt-2 float-right">Simpan</button>
                 </form>
             </div>
