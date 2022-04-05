@@ -84,10 +84,9 @@
                     <h6 class="mt-3"><b>Tanda Tangan</b></h6>
                     <div id="sig"></div>
                     <br />
-                    <button id="clear" class="btn btn-danger btn-group-sm btn-sm"><i class="fas fa-undo-alt"></i> Bersihkan</button>
+                    <button id="clear" class="btn btn-warning btn-group-sm btn-sm"><i class="fas fa-undo-alt"></i> Bersihkan</button>
                     <div id="ttd" class="btn btn-primary btn-sm"><i class="fas fa-save"></i> Simpan</div>
                     <textarea id="signature64" name="signed" style="display: none"></textarea>
-
                     <h6 class="mt-3"><b>Tindak Lanjut</b></h6>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="tindak_lanjut" id="exampleRadios1" value="Tanggapan dan saran">
@@ -107,8 +106,43 @@
                             Koordinasi / Konfirmasikan
                         </label>
                     </div>
+
                     <h6 class="mt-3"><b>Catatan</b></h6>
-                    <textarea class="form-control" name="perihal" id="perihal" cols="30" rows="8" placeholder="catatan" id="perihal" required></textarea>
+                    <div id="accordion">
+                        <div class="card">
+                            <div class="card-header" id="headingOne">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        <i class="fas fa-keyboard"></i> Catatan Ketik
+                                    </button>
+                                </h5>
+                            </div>
+
+                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                <div class="card-body">
+                                    <textarea class="form-control" name="perihal" id="perihal" cols="30" rows="8" placeholder="catatan" id="perihal"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingTwo">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        <i class="fas fa-pen-alt"></i> Catatan Pen
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                <div class="card-body">
+                                    <div id="sig2" style="width: 74vmax;"></div>
+                                    <br />
+                                    <button id="clear2" class="btn btn-warning btn-group-sm btn-sm"><i class="fas fa-undo-alt"></i> Bersihkan</button>
+                                    <textarea id="signature64" name="signed" style="display: none" cols="30" rows="8"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <button id="proses" type="submit" class="btn btn-primary mt-2" disabled>Proses</button>
                     <button id="limpah" type="submit" class="btn btn-primary mt-2" id="tombol" disabled>Limpahkan Sekretaris</button>
                 </form>
@@ -116,6 +150,17 @@
         </div>
     </div>
 </div>
+<script>
+    var sig2 = $('#sig2').signature({
+        syncField: '#signature64',
+        syncFormat: 'PNG'
+    });
+    $('#clear2').click(function(e) {
+        e.preventDefault();
+        sig2.signature('clear');
+        $("#signature64").val('');
+    });
+</script>
 <script type="text/javascript">
     var sig = $('#sig').signature({
         syncField: '#signature64',
@@ -132,6 +177,10 @@
     const limpah = document.getElementById('limpah')
     const link = document.getElementById('link')
     const perihal = document.getElementById('perihal')
+    const catatan1 = document.getElementById('catatan1')
+    const catatan2 = document.getElementById('catatan2')
+    const ct1 = document.getElementById('ct1')
+    const ct2 = document.getElementById('ct2')
 
     ttd.addEventListener('click', function() {
         alert('Tanda tangan berhasil disimpan')
@@ -139,7 +188,12 @@
         limpah.removeAttribute('disabled')
     })
 
-
+    catatan1.addEventListener('click', function() {
+        ct2.setAttribute('style', 'display: none')
+    })
+    catatan2.addEventListener('click', function() {
+        ct1.setAttribute('style', 'display: none')
+    })
     proses.addEventListener('click', function() {
         link.setAttribute('action', '<?= base_url('pimpinan/tambahData') ?>')
     })
