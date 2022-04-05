@@ -1,0 +1,152 @@
+<div class="container-fluid">
+    <div class="card shadow mb-4">
+        <!-- Card Header - Accordion -->
+        <a href="#previewSurat" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="previewSurat">
+            <h6 class="m-0 font-weight-bold text-primary">Preview Surat : </h6>
+        </a>
+        <!-- Card Content - Collapse -->
+        <div class="collapse show" id="previewSurat">
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <tr>
+                        <td style="width: 50%;">
+                            Surat dari &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <?= htmlentities($surat_masuk['asal_surat']) ?>
+                        </td>
+                        <td style="width: 50%;">Diterima Tanggal &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <?= htmlentities($surat_masuk['tanggal_diterima']) ?></td>
+                    </tr>
+                    <tr>
+                        <td>Tanggal surat &nbsp;&nbsp;: <?= htmlentities($surat_masuk['tanggal_surat']) ?></td>
+                        <td>Nomor Agenda &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <?= htmlentities($surat_masuk['nomor_agenda']) ?></td>
+                    </tr>
+                    <tr>
+                        <td>Nomor Surat &nbsp;&nbsp;: <?= htmlentities($surat_masuk['nomor_surat']) ?></td>
+                        <td>Sifat &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <?= htmlentities($surat_masuk['sifat']) ?></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <p>Perihal :</p>
+                            <div><?= htmlentities($surat_masuk['perihal']) ?></div>
+                        </td>
+                    </tr>
+                </table>
+                <a href="<?= base_url('./data/'); ?><?= $surat_masuk['surat'] ?>" target="_blank" type="button" class="btn btn-secondary"><i class="fas fa-envelope-open"> </i> Lihat Surat</a>
+            </div>
+        </div>
+    </div>
+    <!-- Collapsable Card Example -->
+    <div class="card shadow mb-4">
+        <!-- Card Header - Accordion -->
+        <a href="#disposisiSurat" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="disposisiSurat">
+            <h6 class="m-0 font-weight-bold text-primary">Disposisi Surat : </h6>
+        </a>
+        <!-- Card Content - Collapse -->
+        <div class="collapse show" id="disposisiSurat">
+            <div class="card-body">
+                <form id="link" method="post">
+                    <input type="hidden" name="id" value="<?= $surat_masuk['id'] ?>">
+                    <h6><b>Diteruskan Kepada</b></h6>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="Sekretaris" id="sekertaris" name="diteruskan[]">
+                                <label class="form-check-label" for="sekertaris">
+                                    Sekretaris
+                                </label>
+                            </div>
+                            <div class="form-check mt-2">
+                                <input class="form-check-input" type="checkbox" value="Bid. Infrastruktur dan Kewilayahan" id="infrastruktur" name="diteruskan[]">
+                                <label class="form-check-label" for="infrastruktur">
+                                    Bid. Infrastruktur dan Kewilayahan
+                                </label>
+                            </div>
+                            <div class="form-check mt-2">
+                                <input class="form-check-input" type="checkbox" value="Bid. Pemerintahan dan Pembangunan Manusia" id="pemerintahan" name="diteruskan[]">
+                                <label class="form-check-label" for="pemerintahan">
+                                    Bid. Pemerintahan dan Pembangunan Manusia
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-check mt-2">
+                                <input class="form-check-input" type="checkbox" value="Bid. Perencanaan Ekonomi dan Sumber Daya Alam" id="perencanaan" name="diteruskan[]">
+                                <label class="form-check-label" for="perencanaan">
+                                    Bid. Perencanaan Ekonomi dan Sumber Daya Alam
+                                </label>
+                            </div>
+                            <div class="form-check mt-2">
+                                <input class="form-check-input" type="checkbox" value="Bid. Perencanaan, Pengendalian dan Evaluasi Pembangunan" id="pengendalian" name="diteruskan[]">
+                                <label class="form-check-label" for="pengendalian">
+                                    Bid. Perencanaan, Pengendalian dan Evaluasi Pembangunan
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <h6 class="mt-3"><b>Tanda Tangan</b></h6>
+                    <div id="sig"></div>
+                    <br />
+                    <button id="clear" class="btn btn-danger btn-group-sm btn-sm"><i class="fas fa-undo-alt"></i> Bersihkan</button>
+                    <div id="ttd" class="btn btn-primary btn-sm"><i class="fas fa-save"></i> Simpan</div>
+                    <textarea id="signature64" name="signed" style="display: none"></textarea>
+
+                    <h6 class="mt-3"><b>Tindak Lanjut</b></h6>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="tindak_lanjut" id="exampleRadios1" value="Tanggapan dan saran">
+                        <label class="form-check-label" for="exampleRadios1">
+                            Tanggapan dan saran
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="tindak_lanjut" id="exampleRadios2" value="Proses lebih lanjut">
+                        <label class="form-check-label" for="exampleRadios2">
+                            Proses lebih lanjut
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="tindak_lanjut" id="exampleRadios3" value="Koordinasi / Konfirmasikan">
+                        <label class="form-check-label" for="exampleRadios3">
+                            Koordinasi / Konfirmasikan
+                        </label>
+                    </div>
+                    <h6 class="mt-3"><b>Catatan</b></h6>
+                    <textarea class="form-control" name="perihal" id="perihal" cols="30" rows="8" placeholder="catatan" id="perihal" required></textarea>
+                    <button id="proses" type="submit" class="btn btn-primary mt-2" disabled>Proses</button>
+                    <button id="limpah" type="submit" class="btn btn-primary mt-2" id="tombol" disabled>Limpahkan Sekretaris</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var sig = $('#sig').signature({
+        syncField: '#signature64',
+        syncFormat: 'PNG'
+    });
+    $('#clear').click(function(e) {
+        e.preventDefault();
+        sig.signature('clear');
+        $("#signature64").val('');
+    });
+
+    const ttd = document.getElementById('ttd')
+    const proses = document.getElementById('proses')
+    const limpah = document.getElementById('limpah')
+    const link = document.getElementById('link')
+    const perihal = document.getElementById('perihal')
+
+    ttd.addEventListener('click', function() {
+        alert('Tanda tangan berhasil disimpan')
+        proses.removeAttribute('disabled')
+        limpah.removeAttribute('disabled')
+    })
+
+
+    proses.addEventListener('click', function() {
+        link.setAttribute('action', '<?= base_url('pimpinan/tambahData') ?>')
+    })
+
+
+    limpah.addEventListener('click', function() {
+        perihal.removeAttribute('required')
+        link.setAttribute('action', '<?= base_url('pimpinan/limpahkan') ?>')
+    })
+</script>
