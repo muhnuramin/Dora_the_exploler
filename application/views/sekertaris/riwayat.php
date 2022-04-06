@@ -15,7 +15,7 @@
                             <th>Diteruskan Kepada</th>
                             <th>Tanggal Dibaca</th>
                             <th>Tindak Lanjut</th>
-                            <th>Catatan Sekretaris</th>
+                            <th>Catatan</th>
                             <th>Catatan Bidang</th>
                         </tr>
                     </thead>
@@ -34,7 +34,11 @@
                                     <td class="text-success"><?= htmlentities($rs->tanggal_dibaca) ?></td>
                                 <?php endif; ?>
                                 <td><?= htmlentities($rs->tindak_lanjut) ?></td>
-                                <td><?= htmlentities($rs->catatan) ?></td>
+                                <?php if (file_exists('./' . $rs->catatan)) { ?>
+                                    <td><img src="<?= base_url() ?><?= $rs->catatan ?>" alt=""></td>
+                                <?php } else { ?>
+                                    <td><?= $rs->catatan ?></td>
+                                <?php } ?>
                                 <td><?= htmlentities($rs->catatan_bidang) ?></td>
                             </tr>
                         <?php endforeach; ?>

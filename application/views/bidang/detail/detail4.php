@@ -47,7 +47,11 @@
                         <tr>
                             <td colspan="2">
                                 <p>Catatan :</p>
-                                <div><?= htmlentities($s->catatan) ?></div>
+                                <?php if (file_exists('./' . $s->catatan)) { ?>
+                                    <div><img src="<?= base_url() ?><?= $s->catatan ?>" alt=""></div>
+                                <?php } else { ?>
+                                    <p><?= $s->catatan ?></p>
+                                <?php } ?>
                             </td>
                         </tr>
                     </table>

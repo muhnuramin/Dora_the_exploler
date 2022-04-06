@@ -108,6 +108,7 @@
                         </label>
                     </div>
 
+                    <h6 class="mt-3"><b>Catatan</b></h6>
                     <div class="accordion" id="accordionExample">
                         <div class="card">
                             <div class="card-header" id="headingOne">
@@ -136,7 +137,7 @@
                                     <div id="sig2" style="width: 74vmax;"></div>
                                     <br />
                                     <button id="clear2" class="btn btn-warning btn-group-sm btn-sm"><i class="fas fa-undo-alt"></i> Bersihkan</button>
-                                    <textarea id="signature64" name="catatan" style="display: none" cols="30" rows="8"></textarea>
+                                    <textarea id="signature642" name="catatan" style="display: none" cols="30" rows="8"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -150,13 +151,13 @@
 </div>
 <script>
     var sig2 = $('#sig2').signature({
-        syncField: '#signature64',
+        syncField: '#signature642',
         syncFormat: 'PNG'
     });
     $('#clear2').click(function(e) {
         e.preventDefault();
         sig2.signature('clear');
-        $("#signature64").val('');
+        $("#signature642").val('');
     });
 </script>
 <script type="text/javascript">
