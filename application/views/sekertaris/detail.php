@@ -129,7 +129,40 @@
                             </label>
                         </div>
                         <h6 class="mt-3"><b>Catatan</b></h6>
-                        <textarea class="form-control" name="perihal" id="perihal" cols="30" rows="8" placeholder="Perihal" id="perihal"></textarea>
+                        <div id="accordion">
+                            <div class="card">
+                                <div class="card-header" id="headingOne">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            <i class="fas fa-keyboard"></i> Catatan Ketik
+                                        </button>
+                                    </h5>
+                                </div>
+
+                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <textarea class="form-control" name="perihal" id="perihal" cols="30" rows="8" placeholder="catatan" id="perihal"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingTwo">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                            <i class="fas fa-pen-alt"></i> Catatan Pen
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <div id="sig2" style="width: 74vmax;"></div>
+                                        <br />
+                                        <button id="clear2" class="btn btn-warning btn-group-sm btn-sm"><i class="fas fa-undo-alt"></i> Bersihkan</button>
+                                        <textarea id="signature64" name="catatan" style="display: none" cols="30" rows="8"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <button id="proses" type="submit" class="btn btn-primary mt-2" disabled>Proses</button>
 
                         </form>

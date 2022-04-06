@@ -48,8 +48,8 @@
                     <div class="row">
                         <div class="col">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Sekretaris" id="sekertaris" name="diteruskan[]">
-                                <label class="form-check-label" for="sekertaris">
+                                <input class="form-check-input" type="checkbox" value="Sekretaris" id="sekretaris" name="diteruskan[]">
+                                <label class="form-check-label" for="sekretaris">
                                     Sekretaris
                                 </label>
                             </div>
@@ -84,9 +84,10 @@
                     <h6 class="mt-3"><b>Tanda Tangan</b></h6>
                     <div id="sig"></div>
                     <br />
-                    <button id="clear" class="btn btn-warning btn-group-sm btn-sm"><i class="fas fa-undo-alt"></i> Bersihkan</button>
+                    <button id="clear" class="btn btn-danger btn-group-sm btn-sm"><i class="fas fa-undo-alt"></i> Bersihkan</button>
                     <div id="ttd" class="btn btn-primary btn-sm"><i class="fas fa-save"></i> Simpan</div>
                     <textarea id="signature64" name="signed" style="display: none"></textarea>
+
                     <h6 class="mt-3"><b>Tindak Lanjut</b></h6>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="tindak_lanjut" id="exampleRadios1" value="Tanggapan dan saran">
@@ -137,7 +138,7 @@
                                     <div id="sig2" style="width: 74vmax;"></div>
                                     <br />
                                     <button id="clear2" class="btn btn-warning btn-group-sm btn-sm"><i class="fas fa-undo-alt"></i> Bersihkan</button>
-                                    <textarea id="signature64" name="signed" style="display: none" cols="30" rows="8"></textarea>
+                                    <textarea id="signature64" name="catatan" style="display: none" cols="30" rows="8"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -150,17 +151,6 @@
         </div>
     </div>
 </div>
-<script>
-    var sig2 = $('#sig2').signature({
-        syncField: '#signature64',
-        syncFormat: 'PNG'
-    });
-    $('#clear2').click(function(e) {
-        e.preventDefault();
-        sig2.signature('clear');
-        $("#signature64").val('');
-    });
-</script>
 <script type="text/javascript">
     var sig = $('#sig').signature({
         syncField: '#signature64',
@@ -177,10 +167,6 @@
     const limpah = document.getElementById('limpah')
     const link = document.getElementById('link')
     const perihal = document.getElementById('perihal')
-    const catatan1 = document.getElementById('catatan1')
-    const catatan2 = document.getElementById('catatan2')
-    const ct1 = document.getElementById('ct1')
-    const ct2 = document.getElementById('ct2')
 
     ttd.addEventListener('click', function() {
         alert('Tanda tangan berhasil disimpan')
@@ -188,12 +174,7 @@
         limpah.removeAttribute('disabled')
     })
 
-    catatan1.addEventListener('click', function() {
-        ct2.setAttribute('style', 'display: none')
-    })
-    catatan2.addEventListener('click', function() {
-        ct1.setAttribute('style', 'display: none')
-    })
+
     proses.addEventListener('click', function() {
         link.setAttribute('action', '<?= base_url('pimpinan/tambahData') ?>')
     })

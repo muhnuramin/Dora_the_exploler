@@ -57,7 +57,7 @@ class Pimpinan extends CI_Controller
             'surat_masuk' => $this->Surat_masuk_model->getSuratById($id),
         ];
         $data = [
-            'dibaca' => 'Y'
+            'dilihat' => 'Y'
         ];
         $this->db->where('id', $this->input->post('id'));
         $this->db->update('surat_masuk', $data);
@@ -69,12 +69,6 @@ class Pimpinan extends CI_Controller
 
     public function tambahData()
     {
-        is_logged_in();
-        // tambahan
-        $this->load->helper('push_notification');
-        $users = $this->db->get('user')->result_array();
-        $roles = $this->db->get('roles')->result_array();
-
         $date = date('Y-m-d-h-i-s');
         $folderPath = "upload/";
         $image_parts = explode(";base64,", $_POST['signed']);
@@ -99,26 +93,12 @@ class Pimpinan extends CI_Controller
                 'diteruskan_oleh' => 'Pimpinan',
                 'dibaca' => 'N'
             ];
-
-            // tambahan
-            $surat = $this->db->get_where('surat_masuk', ['id' => $data['id_surat_masuk']])->row_array();
-
-            foreach ($users as $user) {
-                for ($i = 0; $i < count($roles); $i++) {
-                    if ($user['role_id'] == $roles[$i]['role_id']) {
-                        if ($roles[$i]['nama_role'] == $object) {
-                            sendPush($user['fcm_token'], 'Surat baru diterima', 'Dari: ' . $surat['asal_surat'], '@mipmap/ic_launcher', 'Diterima dari Pimpinan', 'disposisi', $this->db->insert_id());
-                            break;
-                        }
-                    }
-                }
-            }
-
             $this->session->set_flashdata('flash', 'diteruskan');
             $this->db->insert('disposisi', $data);
         }
-        redirect('Pimpinan');
+        redirect('Pimpinan/dibaca');
     }
+
     public function riwayat()
     {
         is_logged_in();
@@ -134,12 +114,6 @@ class Pimpinan extends CI_Controller
 
     public function limpahkan()
     {
-        is_logged_in();
-        // tambahan
-        $this->load->helper('push_notification');
-        $users = $this->db->get('user')->result_array();
-        $roles = $this->db->get('roles')->result_array();
-
         $folderPath = "upload/";
         $image_parts = explode(";base64,", $_POST['signed']);
         $image_type_aux = explode("image/", $image_parts[0]);
@@ -161,25 +135,10 @@ class Pimpinan extends CI_Controller
             'diteruskan_oleh' => 'Pimpinan',
             'dibaca' => 'N'
         ];
-
-        $this->session->set_flashdata('flash', 'dilimpahkan ke sekretaris');
+        $this->session->set_flashdata('flash', 'dilimpahkan ke Sekretaris');
         $this->db->insert('disposisi', $data);
 
-        // tambahan
-        $surat = $this->db->get_where('surat_masuk', ['id' => $data['id_surat_masuk']])->row_array();
-
-        foreach ($users as $user) {
-            for ($i = 0; $i < count($roles); $i++) {
-                if ($user['role_id'] == $roles[$i]['role_id']) {
-                    if ($roles[$i]['nama_role'] == 'Sekretaris') {
-                        sendPush($user['fcm_token'], 'Surat baru diterima', 'Dari: ' . $surat['asal_surat'], '@mipmap/ic_launcher', 'Diterima dari Pimpinan', 'disposisi', $this->db->insert_id());
-                        break;
-                    }
-                }
-            }
-        }
-
-        redirect(base_url('Pimpinan'));
+        redirect('Pimpinan/dibaca');
     }
 
     // App
