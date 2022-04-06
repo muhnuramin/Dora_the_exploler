@@ -108,18 +108,16 @@
                         </label>
                     </div>
 
-                    <h6 class="mt-3"><b>Catatan</b></h6>
-                    <div id="accordion">
+                    <div class="accordion" id="accordionExample">
                         <div class="card">
                             <div class="card-header" id="headingOne">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                         <i class="fas fa-keyboard"></i> Catatan Ketik
                                     </button>
-                                </h5>
+                                </h2>
                             </div>
-
-                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                                 <div class="card-body">
                                     <textarea class="form-control" name="perihal" id="perihal" cols="30" rows="8" placeholder="catatan" id="perihal"></textarea>
                                 </div>
@@ -127,13 +125,13 @@
                         </div>
                         <div class="card">
                             <div class="card-header" id="headingTwo">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                         <i class="fas fa-pen-alt"></i> Catatan Pen
                                     </button>
-                                </h5>
+                                </h2>
                             </div>
-                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                                 <div class="card-body">
                                     <div id="sig2" style="width: 74vmax;"></div>
                                     <br />
@@ -143,7 +141,6 @@
                             </div>
                         </div>
                     </div>
-
                     <button id="proses" type="submit" class="btn btn-primary mt-2" disabled>Proses</button>
                     <button id="limpah" type="submit" class="btn btn-primary mt-2" id="tombol" disabled>Limpahkan Sekretaris</button>
                 </form>
@@ -151,6 +148,17 @@
         </div>
     </div>
 </div>
+<script>
+    var sig2 = $('#sig2').signature({
+        syncField: '#signature64',
+        syncFormat: 'PNG'
+    });
+    $('#clear2').click(function(e) {
+        e.preventDefault();
+        sig2.signature('clear');
+        $("#signature64").val('');
+    });
+</script>
 <script type="text/javascript">
     var sig = $('#sig').signature({
         syncField: '#signature64',

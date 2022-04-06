@@ -67,7 +67,15 @@ class Sekertaris extends CI_Controller
     public function tambahData()
     {
         $date = date('Y-m-d-h-i-s');
-        $folderPath = "upload/";
+        $folderPath2 = "upload/";
+        $image_parts2 = explode(";base64,", $_POST['signed']);
+        $image_type_aux2 = explode("image/", $image_parts2[0]);
+        $image_type = $image_type_aux2[1];
+        $image_base642 = base64_decode($image_parts2[1]);
+        $file2 = $folderPath2 . uniqid() . '.' . $image_type;
+        file_put_contents($file2, $image_base642);
+
+        $folderPath = "catatan/";
         $image_parts = explode(";base64,", $_POST['signed']);
         $image_type_aux = explode("image/", $image_parts[0]);
         $image_type = $image_type_aux[1];
@@ -76,14 +84,20 @@ class Sekertaris extends CI_Controller
         file_put_contents($file, $image_base64);
 
         $check = $this->input->post('diteruskan');
+        if ($this->input->post('perihal') == null || $this->input->post('perihal') == "") {
+            $catatan = $file;
+        } else {
+            $catatan = $this->input->post('perihal');
+        }
         foreach ($check as $object) {
 
             $data = [
                 'diteruskan_kepada' => $object,
                 'id_surat_masuk' => $this->input->post('id'),
                 'tindak_lanjut' => $this->input->post('tindak_lanjut', true),
-                'catatan' => $this->input->post('perihal', true),
-                'tanda_tangan' => $file,
+                // 'catatan' => $this->input->post('perihal', true),
+                'catatan' => $catatan,
+                'tanda_tangan' => $file2,
                 'tanggal_dikirim' => $date,
                 'tanggal_dibaca' => '-',
                 'catatan_bidang' => '-',
