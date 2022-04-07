@@ -11,16 +11,16 @@
                         <input type="hidden" name="ttd_lama" value="<?= $u->ttd ?>">
                         <div class="form-group">
 
-                            <label for="name">Name </label>
+                            <label for="name"><b>Name</b> </label>
                             <input type="text" class="form-control" id="name" placeholder="Full name" name="name" value="<?= $u->name; ?>">
                         </div>
 
                         <div class=" form-group">
-                            <label for="username">Username</label>
+                            <label for="username"><b>Username</b></label>
                             <input type="text" class="form-control" id="username" placeholder="username" name="username" value="<?= $u->username; ?>">
                         </div>
                         <div class="form-group">
-                            <label for="roles">Posisi</label>
+                            <label for="roles"><b>Posisi</b></label>
 
                             <select class="form-control" id="roles" name="roles" value="">
                                 <option value="<?= $u->role_id; ?>"><?= $u->nama_role; ?></option>
@@ -39,12 +39,12 @@
                         </div>
                         <div class="row">
                             <div class="form-group col">
-                                <label for="password">Password</label>
+                                <label for="password"><b>Password</b></label>
                                 <input type="password" class="form-control" id="password" placeholder="password" name="password1" value="">
                                 <?= form_error('password1', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
                             <div class="form-group col">
-                                <label for="repeat-password">Ulangi Password</label>
+                                <label for="repeat-password"><b>Ulangi Password</b></label>
                                 <input type="password" class="form-control" id="repeat-password" placeholder="Repeat Password" name="password2" value="">
                                 <?= form_error('password2', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>

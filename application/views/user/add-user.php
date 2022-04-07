@@ -7,15 +7,15 @@
             <div class="card-body">
                 <form method="POST" action="<?= base_url('auth/registrasi'); ?>" enctype="multipart/form-data">
                     <div class="form-group">
-                        <label for="name">Name </label>
+                        <label for="name"><b>Name</b> </label>
                         <input type="text" class="form-control" id="name" placeholder="Full name" name="name" required>
                     </div>
                     <div class="form-group">
-                        <label for="username">Username</label>
+                        <label for="username"><b>Username</b></label>
                         <input type="text" class="form-control" id="username" placeholder="username" name="username" required>
                     </div>
                     <div class="form-group">
-                        <label for="roles">Posisi</label>
+                        <label for="roles"><b>Posisi</b></label>
                         <select class="form-control" id="roles" name="roles">
                             <option value="7">Admin</option>
                             <option value="6">Pimpinan</option>
@@ -32,11 +32,11 @@
                     </div>
                     <div class="row">
                         <div class="form-group col">
-                            <label for="password">Password</label>
+                            <label for="password"><b>Password</b></label>
                             <input type="password" class="form-control" id="password" placeholder="password" name="password1" required>
                         </div>
                         <div class="form-group col">
-                            <label for="repeat-password">Ulangi Password</label>
+                            <label for="repeat-password"><b>Ulangi Password</b></label>
                             <input type="password" class="form-control" id="repeat-password" placeholder="Repeat Password" name="password2" required>
                         </div>
                     </div>
