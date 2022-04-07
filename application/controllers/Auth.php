@@ -68,7 +68,6 @@ class Auth extends CI_Controller
                 } else {
                     redirect('home');
                 }
-                //redirect('Home');
             } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
                 Username atau password salah!

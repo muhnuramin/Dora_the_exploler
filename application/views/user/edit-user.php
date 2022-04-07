@@ -8,7 +8,6 @@
                 <?php foreach ($user as $u) : ?>
                     <form method="POST" action="<?= base_url('user/editData'); ?>" enctype="multipart/form-data">
                         <input type="hidden" name="id" value="<?= $u->user_id; ?>">
-                        <input type="hidden" name="ttd_lama" value="<?= $u->ttd ?>">
                         <div class="form-group">
 
                             <label for="name"><b>Name</b> </label>
