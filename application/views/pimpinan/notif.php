@@ -35,7 +35,7 @@
                                 <td><?= htmlentities($s['sifat']) ?></td>
                                 <td>
                                     <center>
-                                        <form method="POST" action="<?= base_url('Pimpinan/baca'); ?>">
+                                        <form method="POST" action="<?= base_url('pimpinan/baca'); ?>">
                                             <input type="hidden" name="id" value="<?= $s['id'] ?>">
                                             <button type="submit" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="auto" title="Baca Surat">Baca</button>
                                         </form>

@@ -29,7 +29,7 @@
                                 <td><?= htmlentities($s->tindak_lanjut) ?></td>
                                 <td>
                                     <center>
-                                        <form method="POST" action="<?= base_url('Sekertaris/baca'); ?>">
+                                        <form method="POST" action="<?= base_url('sekertaris/baca'); ?>">
                                             <input type="hidden" name="id" value="<?= $s->id_disposisi ?>">
                                             <button type="submit" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="auto" title="Baca Surat">Baca</button>
                                         </form>

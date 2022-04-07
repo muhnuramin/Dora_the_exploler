@@ -107,7 +107,7 @@ class Sekertaris extends CI_Controller
             $this->session->set_flashdata('flash', 'diteruskan');
             $this->db->insert('disposisi', $data);
         }
-        redirect(base_url('Sekertaris/dibaca'));
+        redirect(base_url('sekertaris/dibaca'));
     }
     public function riwayat()
     {

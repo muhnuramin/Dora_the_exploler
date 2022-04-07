@@ -37,7 +37,7 @@
                                 <td><?= htmlentities($s->perihal) ?></td>
                                 <td>
                                     <center>
-                                        <a href="<?= base_url('Staf2/detail/'); ?><?= $s->id_disposisi ?>" type="button" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="auto" title="Detail Surat">Detail</a>
+                                        <a href="<?= base_url('staf2/detail/'); ?><?= $s->id_disposisi ?>" type="button" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="auto" title="Detail Surat">Detail</a>
                                     </center>
                                 </td>
                             </tr>

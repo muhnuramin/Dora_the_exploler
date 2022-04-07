@@ -39,7 +39,7 @@
                                 <td><?= htmlentities($sm->tindak_lanjut) ?></td>
                                 <td>
                                     <center>
-                                        <a href="<?= base_url("Sekertaris/detail/") ?><?= $sm->id_disposisi ?>" type="button" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="auto" title="Disposisi Surat"><i class="far fa-paper-plane"></i></a>
+                                        <a href="<?= base_url("sekertaris/detail/") ?><?= $sm->id_disposisi ?>" type="button" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="auto" title="Disposisi Surat"><i class="far fa-paper-plane"></i></a>
                                     </center>
                                 </td>
                             </tr>

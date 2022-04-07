@@ -35,11 +35,17 @@
                                 <td><?= htmlentities($rs->diteruskan_kepada) ?></td>
                                 <td><?= htmlentities($rs->tindak_lanjut) ?></td>
                                 <?php if (file_exists('./' . $rs->catatan)) { ?>
-                                    <td><img src="<?= base_url() ?><?= $rs->catatan ?>" alt=""></td>
+                                    <td><img src="<?= base_url() ?><?= $rs->catatan ?>" width="300px" height="150px"></td>
                                 <?php } else { ?>
-                                    <td><?= $rs->catatan ?></td>
+                                    <td><?= htmlentities($rs->catatan) ?></td>
                                 <?php } ?>
-                                <td><?= htmlentities($rs->catatan_bidang) ?></td>
+
+                                <?php if (file_exists('./' . $rs->catatan_bidang)) { ?>
+                                    <td><img src="<?= base_url() ?><?= $rs->catatan_bidang ?>" width="300px" height="150px"></td>
+                                <?php } else { ?>
+                                    <td><?= htmlentities($rs->catatan_bidang) ?></td>
+                                <?php } ?>
+
                             </tr>
                         <?php endforeach; ?>
                     </tbody>

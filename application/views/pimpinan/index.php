@@ -35,7 +35,7 @@
                                 <td><?= htmlentities($s['sifat']) ?></td>
                                 <td>
                                     <center>
-                                        <a href="<?= base_url("Pimpinan/detail/"); ?><?= $s['id']; ?>" type="button" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="auto" title="Disposisi Surat"><i class="far fa-paper-plane"></i></a>
+                                        <a href="<?= base_url("pimpinan/detail/"); ?><?= $s['id']; ?>" type="button" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="auto" title="Disposisi Surat"><i class="far fa-paper-plane"></i></a>
                                     </center>
                                 </td>
                             </tr>

@@ -46,27 +46,27 @@ class Auth extends CI_Controller
                 ];
                 $this->session->set_userdata($data);
                 if ($user['role_id'] == 6) {
-                    redirect('Pimpinan');
+                    redirect('pimpinan');
                 } else if ($user['role_id'] == 1) {
-                    redirect('Sekertaris');
+                    redirect('sekertaris');
                 } else if ($user['role_id'] == 2) {
-                    redirect('Bidang2');
+                    redirect('bidang2');
                 } else if ($user['role_id'] == 3) {
-                    redirect('Bidang3');
+                    redirect('bidang3');
                 } else if ($user['role_id'] == 4) {
-                    redirect('Bidang4');
+                    redirect('bidang4');
                 } else if ($user['role_id'] == 5) {
-                    redirect('Bidang5');
+                    redirect('bidang5');
                 } else if ($user['role_id'] == 8) {
-                    redirect('Staf2');
+                    redirect('staf2');
                 } else if ($user['role_id'] == 9) {
-                    redirect('Staf3');
+                    redirect('staf3');
                 } else if ($user['role_id'] == 10) {
-                    redirect('Staf4');
+                    redirect('staf4');
                 } else if ($user['role_id'] == 11) {
-                    redirect('Staf5');
+                    redirect('staf5');
                 } else {
-                    redirect('Home');
+                    redirect('home');
                 }
                 //redirect('Home');
             } else {
@@ -99,7 +99,7 @@ class Auth extends CI_Controller
         ];
         $this->session->set_flashdata('flash', 'ditambahkan');
         $this->db->insert('user', $data);
-        redirect('User');
+        redirect('user');
     }
 
     // app

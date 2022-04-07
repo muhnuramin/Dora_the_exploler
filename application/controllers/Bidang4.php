@@ -41,7 +41,7 @@ class Bidang4 extends CI_Controller
         ];
         //$data['surat_masuk'] = $this->Surat_masuk_model->getSuratById($id);
         $this->load->view('layouts/header', $data);
-        $this->load->view('Bidang/detail4', $data);
+        $this->load->view('Bidang/detail/detail4', $data);
         $this->load->view('layouts/footer');
     }
     public function print($id)
@@ -75,12 +75,25 @@ class Bidang4 extends CI_Controller
     }
     public function catatan()
     {
+        $folderPath = "catatan/";
+        $image_parts = explode(";base64,", $_POST['catatan']);
+        $image_type_aux = explode("image/", $image_parts[0]);
+        $image_type = $image_type_aux[1];
+        $image_base64 = base64_decode($image_parts[1]);
+        $file = $folderPath . uniqid() . '.' . $image_type;
+        file_put_contents($file, $image_base64);
+
+        if ($this->input->post('catatan_bidang') == null || $this->input->post('catatan_bidang') == "") {
+            $catatan = $file;
+        } else {
+            $catatan = $this->input->post('catatan_bidang');
+        }
         $data = [
-            'catatan_bidang' => $this->input->post('catatan_bidang', true)
+            'catatan_bidang' => $catatan
         ];
         $this->session->set_flashdata('flash', 'diinput');
         $this->db->where('id_disposisi', $this->input->post('id'));
         $this->db->update('disposisi', $data);
-        redirect('Bidang4');
+        redirect('bidang4/dibaca');
     }
 }

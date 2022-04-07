@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <?php foreach ($surat_masuk as $s) : ?>
-        <a href="<?= base_url('Staf4/print/'); ?><?= $s->id_disposisi ?>" target="_BLANK" type="button" class="btn btn-success"><i class="fas fa-print"></i> Print Lembar Disposisi</a>
+        <a href="<?= base_url('staf4/print/'); ?><?= $s->id_disposisi ?>" target="_BLANK" type="button" class="btn btn-success"><i class="fas fa-print"></i> Print Lembar Disposisi</a>
         <a href="<?= base_url('./data/'); ?><?= $s->surat ?>" target="_blank" type="button" class="btn btn-secondary"><i class="fas fa-envelope-open"> </i> Baca Surat</a><br><br>
         <div class="card shadow mb-4">
             <!-- Card Header - Accordion -->

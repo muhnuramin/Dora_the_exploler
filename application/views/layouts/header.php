@@ -54,7 +54,7 @@
         <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
                 <div class="sidebar-brand-text mx-3">SI Disposisi Surat</div>
             </a>
 
@@ -66,17 +66,17 @@
                     Admin
                 </div>
                 <li class="nav-item">
-                    <a class="nav-link" href=<?= base_url("Home/index") ?>>
+                    <a class="nav-link" href=<?= base_url("home/index") ?>>
                         <i class="fas fa-envelope-open-text"></i>
                         <span>Surat Masuk</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href=<?= base_url("Surat_diteruskan/index") ?>>
+                    <a class="nav-link" href=<?= base_url("surat_diteruskan/index") ?>>
                         <i class="fas fa-paper-plane"></i>
                         <span>Surat Diteruskan</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href=<?= base_url("User/index") ?>>
+                    <a class="nav-link" href=<?= base_url("user/index") ?>>
                         <i class="fas fa-users"></i>
                         <span>Pengguna</span></a>
                 </li>
@@ -88,17 +88,17 @@
                     Pimpinan
                 </div>
                 <li class="nav-item">
-                    <a class="nav-link" href=<?= base_url("Pimpinan/index") ?>>
+                    <a class="nav-link" href=<?= base_url("pimpinan/index") ?>>
                         <i class="fas fa-bell"></i>
                         <span>Surat Masuk</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href=<?= base_url("Pimpinan/dibaca") ?>>
+                    <a class="nav-link" href=<?= base_url("pimpinan/dibaca") ?>>
                         <i class="fas fa-envelope-open-text"></i>
                         <span>Riwayat Surat Masuk</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href=<?= base_url("Pimpinan/riwayat") ?>>
+                    <a class="nav-link" href=<?= base_url("pimpinan/riwayat") ?>>
                         <i class="fas fa-mail-bulk"></i>
                         <span>Riwayat Disposisi</span></a>
                 </li>
@@ -109,17 +109,17 @@
                     Sekretaris
                 </div>
                 <li class="nav-item">
-                    <a class="nav-link" href=<?= base_url("Sekertaris/index") ?>>
+                    <a class="nav-link" href=<?= base_url("sekertaris/index") ?>>
                         <i class="fas fa-bell"></i>
                         <span>Surat Masuk</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href=<?= base_url("Sekertaris/dibaca") ?>>
+                    <a class="nav-link" href=<?= base_url("sekertaris/dibaca") ?>>
                         <i class="fas fa-envelope-open-text"></i>
                         <span>Riwayat Surat Masuk</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href=<?= base_url("Sekertaris/riwayat") ?>>
+                    <a class="nav-link" href=<?= base_url("sekertaris/riwayat") ?>>
                         <i class="fas fa-mail-bulk"></i>
                         <span>Riwayat Disposisi</span></a>
                 </li>

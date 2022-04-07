@@ -110,7 +110,7 @@ class Pimpinan extends CI_Controller
             $this->session->set_flashdata('flash', 'diteruskan');
             $this->db->insert('disposisi', $data);
         }
-        redirect('Pimpinan/dibaca');
+        redirect('pimpinan/dibaca');
     }
 
     public function riwayat()
@@ -152,7 +152,7 @@ class Pimpinan extends CI_Controller
         $this->session->set_flashdata('flash', 'dilimpahkan ke sekertaris');
         $this->db->insert('disposisi', $data);
 
-        redirect('Pimpinan/dibaca');
+        redirect('pimpinan/dibaca');
     }
 
     // App
