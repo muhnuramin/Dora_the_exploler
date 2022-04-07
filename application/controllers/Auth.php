@@ -123,28 +123,39 @@ class Auth extends CI_Controller
                     }
                 }
 
-                $data['value'] = 1;
-                $data['nama'] = $user['name'];
-                $data['username'] = $user['username'];
-                $data['role'] = $userRole;
-                $data['fcm_token'] = $fcmToken;
-                $data['id'] = $user['user_id'];
-                $data['message'] = 'login berhasil';
+                if ($userRole != 'Admin') {
+                    $data['value'] = 1;
+                    $data['user_id'] = $user['user_id'];
+                    $data['name'] = $user['name'];
+                    $data['username'] = $user['username'];
+                    $data['role'] = $userRole;
+                    // $data['ttd'] = $user['ttd'];
+                    // $data['ttd_qrcode'] = $user['ttd2'];
+                    $data['fcm_token'] = $fcmToken;
+                    // pesan
+                    $data['message'] = 'login berhasil';
 
-                if ($user['has_app'] == 0) {
-                    $user['has_app'] = 1;
-                    $user['fcm_token'] = $data['fcm_token'];
+                    if ($user['has_app'] == 0) {
+                        $user['has_app'] = 1;
+                        $user['fcm_token'] = $data['fcm_token'];
 
-                    $this->db->where('user_id', $user['user_id']);
-                    $this->db->update('user', $user);
-                } else if ($user['fcm_token'] != $fcmToken) {
-                    $user['fcm_token'] = $data['fcm_token'];
+                        $this->db->where('user_id', $user['user_id']);
+                        $this->db->update('user', $user);
+                    } else if ($user['fcm_token'] != $fcmToken) {
+                        $user['fcm_token'] = $data['fcm_token'];
 
-                    $this->db->where('user_id', $user['user_id']);
-                    $this->db->update('user', $user);
+                        $this->db->where('user_id', $user['user_id']);
+                        $this->db->update('user', $user);
+                    }
+
+                    echo json_encode($data);
+                } else {
+                    $data['value'] = 0;
+                    $data['fcm_token'] = $fcmToken;
+                    $data['message'] = 'Akun ini hanya diakses via website';
+
+                    echo json_encode($data);
                 }
-
-                echo json_encode($data);
             } else {
                 $data['value'] = 0;
                 $data['fcm_token'] = $fcmToken;
