@@ -41,6 +41,6 @@ class Staf4 extends CI_Controller
             'name' => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
         ];
         //$data['surat_masuk'] = $this->Surat_masuk_model->getSuratById($id);
-        $this->load->view('Bidang/print/print4', $data);
+        $this->load->view('bidang/print/print4', $data);
     }
 }

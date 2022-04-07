@@ -14,8 +14,6 @@ class User extends CI_Controller
     }
     public function index()
     {
-        //$data['surat_masuk'] = $this->Surat_masuk_model->getAllSurat();
-
         $data = [
             'title' => 'Daftar User',
             // 'user' => $this->User_model->getAllUser(),
@@ -41,31 +39,18 @@ class User extends CI_Controller
 
     public function editData()
     {
-        $config['upload_path'] = './upload';
-        $config['allowed_types'] = 'jpg|png|jpeg';
-        $this->load->library('upload', $config);
-
-        if (!$this->upload->do_upload('ttd')) {
-            $ttd = $this->input->post('ttd_lama');
-        } else {
-            $ttd = $_FILES['ttd']['name'];
-            $ttd = $this->upload->data('file_name');
-        }
-
         if ($this->input->post('password1') == null) {
             $data = [
                 'name' => $this->input->post('name', true),
                 'username' => $this->input->post('username', true),
                 'role_id' => $this->input->post('roles', true),
-                'ttd' => $ttd
             ];
         } else {
             $data = [
                 'name' => $this->input->post('name', true),
                 'username' => $this->input->post('username', true),
                 'role_id' => $this->input->post('roles', true),
-                'password' => password_hash($this->input->post('password1', true), PASSWORD_DEFAULT),
-                'ttd' => $ttd
+                'password' => password_hash($this->input->post('password1', true), PASSWORD_DEFAULT)
             ];
         }
 

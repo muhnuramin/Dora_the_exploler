@@ -19,7 +19,7 @@ class Bidang2 extends CI_Controller
             'surat_masuk' => $this->Relasi_model->NotifMasukB1(),
         ];
         $this->load->view('layouts/header', $data);
-        $this->load->view('Bidang/notif/notif2', $data);
+        $this->load->view('bidang/notif/notif2', $data);
         $this->load->view('layouts/footer');
     }
     public function dibaca()
@@ -30,7 +30,7 @@ class Bidang2 extends CI_Controller
             'surat_masuk' => $this->Relasi_model->SuratMasukB1(),
         ];
         $this->load->view('layouts/header', $data);
-        $this->load->view('Bidang/bidang2', $data);
+        $this->load->view('bidang/bidang2', $data);
         $this->load->view('layouts/footer');
     }
     public function detail($id)
@@ -42,7 +42,7 @@ class Bidang2 extends CI_Controller
         ];
         //$data['surat_masuk'] = $this->Surat_masuk_model->getSuratById($id);
         $this->load->view('layouts/header', $data);
-        $this->load->view('Bidang/detail/detail2', $data);
+        $this->load->view('bidang/detail/detail2', $data);
         $this->load->view('layouts/footer');
     }
     public function print($id)
@@ -52,7 +52,7 @@ class Bidang2 extends CI_Controller
             'name' => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
         ];
         //$data['surat_masuk'] = $this->Surat_masuk_model->getSuratById($id);
-        $this->load->view('Bidang/print/print2', $data);
+        $this->load->view('bidang/print/print2', $data);
     }
     public function editbaca()
     {
@@ -71,7 +71,7 @@ class Bidang2 extends CI_Controller
         $this->db->update('disposisi', $data);
 
         $this->load->view('layouts/header', $data2);
-        $this->load->view('Bidang/detail/detail2', $data2);
+        $this->load->view('bidang/detail/detail2', $data2);
         $this->load->view('layouts/footer');
     }
     public function catatan()
