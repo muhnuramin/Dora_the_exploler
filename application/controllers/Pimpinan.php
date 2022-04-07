@@ -162,36 +162,62 @@ class Pimpinan extends CI_Controller
         $users = $this->db->get('user')->result_array();
         $roles = $this->db->get('roles')->result_array();
 
-        $name = '-';
+        $nameTTD = '-';
+        $nameCatatan = '-';
+        $folder = 'upload/';
+        $folder2 = 'upload/catatan/';
+        // $name = $this->input->post('tanda_tangan');
         $time = date('Y-m-d-h-i-s');
         $data = array();
         $rawRole = $this->input->post('diteruskan_kepada'); // role ini kaya gini: 1,3,6,7
         $arrRole = explode(',', $rawRole); // nanti dipecah
 
 
-        if ($this->input->post('image') != '-') {
+        // if ($this->input->post('image') != '-') {
 
-            $folder = 'upload/';
-            $image = $this->input->post('image');
-            $name = $this->input->post('filename');
+        //     $folder = 'upload/';
+        //     $image = $this->input->post('image');
+        //     $name = $this->input->post('filename');
 
-            $realImage = base64_decode($image);
+        //     $realImage = base64_decode($image);
+
+        //     $file = $folder . uniqid() . '.png';
+        //     $name = $file;
+        //     file_put_contents($file, $realImage);
+        // }
+
+        // proses gambar tanda tangan
+        if ($this->input->post('image_ttd') != '-') {
+            $image = $this->input->post('image_ttd');
+            $imageDecode = base64_decode($image);
 
             $file = $folder . uniqid() . '.png';
-            $name = $file;
-            file_put_contents($file, $realImage);
+            $nameTTD = $file;
+            file_put_contents($file, $imageDecode);
+        }
+
+        if ($this->input->post('image_catatan') != '-') {
+            $image = $this->input->post('image_catatan');
+            $imageDecode = base64_decode($image);
+
+            $file = $folder2 . uniqid() . '.png';
+            $nameCatatan = $file;
+            file_put_contents($file, $imageDecode);
+        } else {
+            $nameCatatan = $this->input->post('catatan', true);
         }
 
         $data = [
-            'diteruskan_kepada' => '-',
             'id_surat_masuk' => $this->input->post('id_surat_masuk', true),
+            'diteruskan_kepada' => '-',
+            'tanda_tangan' => $nameTTD,
             'tindak_lanjut' => $this->input->post('tindak_lanjut', true),
-            'catatan' => $this->input->post('catatan', true),
-            'tanda_tangan' => $name,
+            'catatan' => $nameCatatan,
+            // 'catatan' => $this->input->post('catatan', true),
             'tanggal_dikirim' => $time,
-            'tanggal_dibaca' => '-',
-            'catatan_bidang' => '-',
             'diteruskan_oleh' => $this->input->post('diteruskan_oleh', true),
+            'tanggal_dibaca' => '-',
+            'catatan_bidang' => $this->input->post('catatan_bidang', true),
             'dibaca' => 'N'
         ];
 
