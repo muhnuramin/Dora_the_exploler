@@ -29,7 +29,7 @@ class Bidang5 extends CI_Controller
             'surat_masuk' => $this->Relasi_model->SuratMasukB4(),
         ];
         $this->load->view('layouts/header', $data);
-        $this->load->view('Bidang/bidang5', $data);
+        $this->load->view('bidang/bidang5', $data);
         $this->load->view('layouts/footer');
     }
     public function detail($id)
@@ -41,7 +41,7 @@ class Bidang5 extends CI_Controller
         ];
         //$data['surat_masuk'] = $this->Surat_masuk_model->getSuratById($id);
         $this->load->view('layouts/header', $data);
-        $this->load->view('Bidang/detail/detail5', $data);
+        $this->load->view('bidang/detail/detail5', $data);
         $this->load->view('layouts/footer');
     }
     public function print($id)
@@ -51,7 +51,7 @@ class Bidang5 extends CI_Controller
             'name' => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
         ];
         //$data['surat_masuk'] = $this->Surat_masuk_model->getSuratById($id);
-        $this->load->view('Bidang/print/print5', $data);
+        $this->load->view('bidang/print/print5', $data);
     }
 
     public function editbaca()
@@ -71,7 +71,7 @@ class Bidang5 extends CI_Controller
         $this->db->update('disposisi', $data);
 
         $this->load->view('layouts/header', $data2);
-        $this->load->view('Bidang/detail/detail5', $data2);
+        $this->load->view('bidang/detail/detail5', $data2);
         $this->load->view('layouts/footer');
     }
     public function catatan()

@@ -107,12 +107,7 @@
                             </div>
                         </div>
                     </div>
-                    <h6 class="mt-3"><b>Tanda Tangan</b></h6>
-                    <div id="sig"></div>
-                    <br />
-                    <button id="clear" class="btn btn-danger btn-group-sm btn-sm"><i class="fas fa-undo-alt"></i> Bersihkan</button>
-                    <div id="ttd" class="btn btn-primary btn-sm"><i class="fas fa-save"></i> Simpan</div>
-                    <textarea id="signature64" name="signed" style="display: none"></textarea>
+
                     <h6 class="mt-3"><b>Tindak Lanjut</b></h6>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="tindak_lanjut" id="exampleRadios1" value="Tanggapan dan saran">
@@ -166,6 +161,12 @@
                             </div>
                         </div>
                     </div>
+                    <h6 class="mt-3"><b>Tanda Tangan</b></h6>
+                    <div id="sig"></div>
+                    <br />
+                    <button id="clear" class="btn btn-danger btn-group-sm btn-sm"><i class="fas fa-undo-alt"></i> Bersihkan</button>
+                    <div id="ttd" class="btn btn-primary btn-sm"><i class="fas fa-save"></i> Simpan</div>
+                    <textarea id="signature64" name="signed" style="display: none"></textarea><br><br>
                     <button id="proses" type="submit" class="btn btn-primary mt-2" disabled>Proses</button>
 
                     </form>

@@ -17,6 +17,7 @@
                             <th>Diteruskan Kepada</th>
                             <th>Tanggal Dibaca</th>
                             <th>TTD</th>
+                            <th>Print</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -35,6 +36,9 @@
                                     <td class="text-success"><?= htmlentities($sd->tanggal_dibaca) ?></td>
                                 <?php endif; ?>
                                 <td class="align-middle" scope="row"><img src="<?= base_url() ?><?= $sd->tanda_tangan ?>" width="100"></td>
+                                <td>
+                                    print
+                                </td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
