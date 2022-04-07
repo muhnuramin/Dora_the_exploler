@@ -37,7 +37,7 @@
                                 <?php endif; ?>
                                 <td class="align-middle" scope="row"><img src="<?= base_url() ?><?= $sd->tanda_tangan ?>" width="100"></td>
                                 <td>
-                                    print
+                                    <a href="<?= base_url('admin/print/'); ?><?= $sd->id_disposisi ?>" target="_BLANK" type="button" class="btn btn-success"><i class="fas fa-print"></i> Print Lembar Disposisi</a><br><br>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
