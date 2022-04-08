@@ -92,6 +92,16 @@ class Relasi_model extends CI_Model
         $return = $this->db->where($array)->get();
         return $return->result();
     }
+    public function SuratMasukbyId($id)
+    {
+        $this->db->select('*');
+        $this->db->from('disposisi');
+        $this->db->join('surat_masuk', 'surat_masuk.id=disposisi.id_surat_masuk');
+        $this->db->order_by('id_disposisi', 'DESC');
+        $array = array('id_disposisi' => $id);
+        $return = $this->db->where($array)->get();
+        return $return->result();
+    }
     public function SuratMasukB2()
     {
         $this->db->select('*');
