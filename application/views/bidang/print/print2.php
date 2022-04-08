@@ -54,7 +54,7 @@
                     <td colspan="2">
                         <p>Catatan :</p>
                         <?php if (file_exists('./' . $s->catatan)) { ?>
-                            <div><img src="<?= base_url() ?><?= $s->catatan ?>" width="900"></div>
+                            <div><img src="<?= base_url() ?><?= $s->catatan ?>" width="900" height="200"></div>
                         <?php } else { ?>
                             <p><?= $s->catatan ?></p>
                         <?php } ?>
@@ -66,7 +66,7 @@
                     <div class="paraf">
                         Paraf
                     </div>
-                    <img src="<?= base_url() ?><?= $s->tanda_tangan ?>" width="200">
+                    <img src="<?= base_url() ?><?= $s->tanda_tangan ?>" width="200" height="200">
                 </center>
             </div>
         <?php endforeach; ?>

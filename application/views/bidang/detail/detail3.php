@@ -48,7 +48,7 @@
                             <td colspan="2">
                                 <p>Catatan :</p>
                                 <?php if (file_exists('./' . $s->catatan)) { ?>
-                                    <div><img src="<?= base_url() ?><?= $s->catatan ?>" alt=""></div>
+                                    <div><img src="<?= base_url() ?><?= $s->catatan ?>" width="900" height="200"></div>
                                 <?php } else { ?>
                                     <p><?= $s->catatan ?></p>
                                 <?php } ?>
