@@ -66,7 +66,7 @@ class Pimpinan extends CI_Controller
         $file2 = $folderPath2 . uniqid() . '.' . $image_type;
         file_put_contents($file2, $image_base642);
 
-        $folderPath = "catatan/";
+        $folderPath = "upload/catatan/";
         $image_parts = explode(";base64,", $_POST['catatan']);
         $image_type_aux = explode("image/", $image_parts[0]);
         $image_type = $image_type_aux[1];
