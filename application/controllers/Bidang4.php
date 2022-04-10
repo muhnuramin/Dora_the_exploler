@@ -13,17 +13,6 @@ class Bidang4 extends CI_Controller
     public function index()
     {
         $data = [
-            'title' => 'Bid. Perencanaan Ekonomi dan Sumber Daya Alam | Surat Masuk',
-            'name' => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
-            'surat_masuk' => $this->Relasi_model->NotifMasukB3(),
-        ];
-        $this->load->view('layouts/header', $data);
-        $this->load->view('bidang/notif/notif4', $data);
-        $this->load->view('layouts/footer');
-    }
-    public function dibaca()
-    {
-        $data = [
             'title' => 'Bid. Infrastruktur dan Kewilayahan | Surat Masuk',
             'name' => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
             'surat_masuk' => $this->Relasi_model->SuratMasukB3(),

@@ -11,19 +11,8 @@ class Pimpinan extends CI_Controller
         $this->load->model('Relasi_model');
         // is_logged_in();
     }
+
     public function index()
-    {
-        is_logged_in();
-        $data = [
-            'title' => 'Pimpinan | Surat Masuk',
-            'surat_masuk' => $this->Surat_masuk_model->notifSurat(),
-            'name' => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
-        ];
-        $this->load->view('layouts/header', $data);
-        $this->load->view('pimpinan/notif', $data);
-        $this->load->view('layouts/footer');
-    }
-    public function dibaca()
     {
         is_logged_in();
         $data = [
@@ -48,25 +37,24 @@ class Pimpinan extends CI_Controller
         $this->load->view('layouts/footer');
     }
 
-    public function baca()
+    public function disposisiulang($id)
     {
-        $id = $this->input->post('id');
-        $data2 = [
-            'title' => 'Disposisi Surat',
-            'name' => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
-            'surat_masuk' => $this->Surat_masuk_model->getSuratById($id),
-        ];
         $data = [
-            'dilihat' => 'Y'
+            'title' => 'Disposisi Ulang Surat',
+            'surat_masuk' => $this->Surat_masuk_model->getSuratById($id),
+            'name' => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
         ];
-        $this->db->where('id', $this->input->post('id'));
-        $this->db->update('surat_masuk', $data);
-
-        $this->load->view('layouts/header', $data2);
-        $this->load->view('pimpinan/detail', $data2);
+        $data2 = [
+            'didisposisi' => 'N',
+        ];
+        $this->db->where('id', $id);
+        $this->db->update('surat_masuk', $data2);
+        $this->load->view('layouts/header', $data);
+        $this->load->view('pimpinan/detail');
         $this->load->view('layouts/footer');
-    }
 
+        $this->db->delete('disposisi', ['id_surat_masuk' => $id]);
+    }
     public function tambahData()
     {
         $date = date('Y-m-d-h-i-s');
@@ -98,19 +86,22 @@ class Pimpinan extends CI_Controller
                 'diteruskan_kepada' => $object,
                 'id_surat_masuk' => $this->input->post('id'),
                 'tindak_lanjut' => $this->input->post('tindak_lanjut'),
-                //'catatan' => $this->input->post('perihal'),
                 'catatan' => $catatan,
                 'tanda_tangan' => $file2,
                 'tanggal_dikirim' => $date,
                 'tanggal_dibaca' => '-',
                 'catatan_bidang' => '-',
                 'diteruskan_oleh' => 'Pimpinan',
-                'dibaca' => 'N'
             ];
-            $this->session->set_flashdata('flash', 'diteruskan');
             $this->db->insert('disposisi', $data);
+            $data2 = [
+                'didisposisi' => 'Y',
+            ];
+            $this->db->where('id', $this->input->post('id'));
+            $this->db->update('surat_masuk', $data2);
+            $this->session->set_flashdata('flash', 'diteruskan');
         }
-        redirect('pimpinan/dibaca');
+        redirect('pimpinan/riwayat');
     }
 
     public function riwayat()
@@ -128,31 +119,13 @@ class Pimpinan extends CI_Controller
 
     public function limpahkan()
     {
-        $folderPath = "upload/";
-        $image_parts = explode(";base64,", $_POST['signed']);
-        $image_type_aux = explode("image/", $image_parts[0]);
-        $image_type = $image_type_aux[1];
-        $image_base64 = base64_decode($image_parts[1]);
-        $file = $folderPath . uniqid() . '.' . $image_type;
-        file_put_contents($file, $image_base64);
-
-        $date = date('Y-m-d-h-i-s');
         $data = [
-            'diteruskan_kepada' => 'Sekretaris',
-            'id_surat_masuk' => $this->input->post('id'),
-            'tindak_lanjut' => 'Belum Diproses',
-            'catatan' => '',
-            'tanda_tangan' => $file,
-            'tanggal_dikirim' => $date,
-            'tanggal_dibaca' => '-',
-            'catatan_bidang' => '-',
-            'diteruskan_oleh' => 'Pimpinan',
-            'dibaca' => 'N'
+            'didisposisi' => '?',
         ];
         $this->session->set_flashdata('flash', 'dilimpahkan ke sekertaris');
-        $this->db->insert('disposisi', $data);
-
-        redirect('pimpinan/dibaca');
+        $this->db->where('id', $this->input->post('id'));
+        $this->db->update('surat_masuk', $data);
+        redirect('pimpinan/index');
     }
 
     // App
@@ -171,20 +144,6 @@ class Pimpinan extends CI_Controller
         $data = array();
         $rawRole = $this->input->post('diteruskan_kepada'); // role ini kaya gini: 1,3,6,7
         $arrRole = explode(',', $rawRole); // nanti dipecah
-
-
-        // if ($this->input->post('image') != '-') {
-
-        //     $folder = 'upload/';
-        //     $image = $this->input->post('image');
-        //     $name = $this->input->post('filename');
-
-        //     $realImage = base64_decode($image);
-
-        //     $file = $folder . uniqid() . '.png';
-        //     $name = $file;
-        //     file_put_contents($file, $realImage);
-        // }
 
         // proses gambar tanda tangan
         if ($this->input->post('image_ttd') != '-') {

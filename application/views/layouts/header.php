@@ -89,13 +89,8 @@
                 </div>
                 <li class="nav-item">
                     <a class="nav-link" href=<?= base_url("pimpinan/index") ?>>
-                        <i class="fas fa-bell"></i>
-                        <span>Surat Masuk</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href=<?= base_url("pimpinan/dibaca") ?>>
                         <i class="fas fa-envelope-open-text"></i>
-                        <span>Riwayat Surat Masuk</span></a>
+                        <span>Surat Masuk</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href=<?= base_url("pimpinan/riwayat") ?>>
@@ -110,13 +105,8 @@
                 </div>
                 <li class="nav-item">
                     <a class="nav-link" href=<?= base_url("sekertaris/index") ?>>
-                        <i class="fas fa-bell"></i>
-                        <span>Surat Masuk</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href=<?= base_url("sekertaris/dibaca") ?>>
                         <i class="fas fa-envelope-open-text"></i>
-                        <span>Riwayat Surat Masuk</span></a>
+                        <span>Surat Masuk</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href=<?= base_url("sekertaris/riwayat") ?>>
@@ -134,11 +124,6 @@
                         <i class="fas fa-bell"></i>
                         <span>Surat Masuk</span></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href=<?= base_url("bidang2/dibaca") ?>>
-                        <i class="fas fa-envelope-open-text"></i>
-                        <span>Riwayat Surat Masuk</span></a>
-                </li>
             <?php } ?>
             <?php if ($this->session->userdata('role_id') == 3) { ?>
                 <hr class="sidebar-divider my-0">
@@ -147,13 +132,8 @@
                 </div>
                 <li class="nav-item">
                     <a class="nav-link" href=<?= base_url("bidang3/index") ?>>
-                        <i class="fas fa-bell"></i>
-                        <span>Surat Masuk</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href=<?= base_url("bidang3/dibaca") ?>>
                         <i class="fas fa-envelope-open-text"></i>
-                        <span>Riwayat Surat Masuk</span></a>
+                        <span>Surat Masuk</span></a>
                 </li>
             <?php } ?>
             <?php if ($this->session->userdata('role_id') == 4) { ?>
@@ -163,13 +143,8 @@
                 </div>
                 <li class="nav-item">
                     <a class="nav-link" href=<?= base_url("bidang4/index") ?>>
-                        <i class="fas fa-bell"></i>
-                        <span>Surat Masuk</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href=<?= base_url("bidang4/dibaca") ?>>
                         <i class="fas fa-envelope-open-text"></i>
-                        <span>Riwayat Surat Masuk</span></a>
+                        <span>Surat Masuk</span></a>
                 </li>
             <?php } ?>
             <?php if ($this->session->userdata('role_id') == 5) { ?>
@@ -179,13 +154,8 @@
                 </div>
                 <li class="nav-item">
                     <a class="nav-link" href=<?= base_url("bidang5/index") ?>>
-                        <i class="fas fa-bell"></i>
-                        <span>Surat Masuk</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href=<?= base_url("bidang5/dibaca") ?>>
                         <i class="fas fa-envelope-open-text"></i>
-                        <span>Riwayat Surat Masuk</span></a>
+                        <span>Surat Masuk</span></a>
                 </li>
             <?php } ?>
             <?php if ($this->session->userdata('role_id') == 8) { ?>
@@ -272,13 +242,3 @@
                         </li>
                     </ul>
                 </nav>
-                <!-- End of Topbar -->
-                <!-- <div id="loading">
-                    <div class="logoLoader"></div>
-                    <span class="loader"></span>
-                    <div class="textLoader">
-                        <center>
-                            <b>Please Wait ... </b>
-                        </center>
-                    </div>
-                </div> -->

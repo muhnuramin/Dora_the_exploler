@@ -10,18 +10,8 @@ class Bidang5 extends CI_Controller
         $this->load->model('Relasi_model');
         is_logged_in();
     }
+
     public function index()
-    {
-        $data = [
-            'title' => 'Bid. Perencanaan, Pengendalian dan Evaluasi Pembangunan | Surat Masuk',
-            'name' => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
-            'surat_masuk' => $this->Relasi_model->NotifMasukB4(),
-        ];
-        $this->load->view('layouts/header', $data);
-        $this->load->view('bidang/notif/notif5', $data);
-        $this->load->view('layouts/footer');
-    }
-    public function dibaca()
     {
         $data = [
             'title' => 'Bid. Infrastruktur dan Kewilayahan | Surat Masuk',

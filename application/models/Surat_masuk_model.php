@@ -10,19 +10,12 @@ class Surat_masuk_model extends CI_model
         $query = $this->db->get();
         return $query->result_array();
     }
-    public function notifSurat()
-    {
-        $this->db->from('surat_masuk');
-        $this->db->order_by('id', 'DESC');
-        $this->db->where('dilihat', 'N');
-        $query = $this->db->get();
-        return $query->result_array();
-    }
+
     public function bacaSurat()
     {
         $this->db->from('surat_masuk');
         $this->db->order_by('id', 'DESC');
-        $this->db->where('dilihat', 'Y');
+        $this->db->where('didisposisi', 'N');
         $query = $this->db->get();
         return $query->result_array();
     }

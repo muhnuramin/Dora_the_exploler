@@ -29,20 +29,11 @@ class Relasi_model extends CI_Model
         $this->db->from('disposisi');
         $this->db->join('surat_masuk', 'surat_masuk.id=disposisi.id_surat_masuk');
         $this->db->order_by('id_disposisi', 'DESC');
-        $array = array('diteruskan_kepada' => 'Sekretaris', 'dibaca' => 'Y');
+        $array = array('diteruskan_kepada' => 'Sekretaris', 'didisposisi' => 'N');
         $return = $this->db->where($array)->get();
         return $return->result();
     }
-    public function notifDisposisiSekertaris()
-    {
-        $this->db->select('*');
-        $this->db->from('disposisi');
-        $this->db->join('surat_masuk', 'surat_masuk.id=disposisi.id_surat_masuk');
-        $this->db->order_by('id_disposisi', 'DESC');
-        $array = array('diteruskan_kepada' => 'Sekretaris', 'dibaca' => 'N');
-        $return = $this->db->where($array)->get();
-        return $return->result();
-    }
+
     public function RiwayatDisposisi()
     {
         $this->db->select('*');
@@ -62,16 +53,7 @@ class Relasi_model extends CI_Model
         $return = $this->db->where($array)->get();
         return $return->result();
     }
-    public function NotifMasukB1()
-    {
-        $this->db->select('*');
-        $this->db->from('disposisi');
-        $this->db->join('surat_masuk', 'surat_masuk.id=disposisi.id_surat_masuk');
-        $this->db->order_by('id_disposisi', 'DESC');
-        $array = array('diteruskan_kepada' => 'Bid. Infrastruktur dan Kewilayahan', 'dibaca' => 'N');
-        $return = $this->db->where($array)->get();
-        return $return->result();
-    }
+
     public function SuratMasukSekertarisbyId($id)
     {
         $this->db->select('*');
@@ -112,16 +94,7 @@ class Relasi_model extends CI_Model
         $return = $this->db->where($array)->get();
         return $return->result();
     }
-    public function NotifMasukB2()
-    {
-        $this->db->select('*');
-        $this->db->from('disposisi');
-        $this->db->join('surat_masuk', 'surat_masuk.id=disposisi.id_surat_masuk');
-        $this->db->order_by('id_disposisi', 'DESC');
-        $array = array('diteruskan_kepada' => 'Bid. Pemerintahan dan Pembangunan Manusia', 'dibaca' => 'N');
-        $return = $this->db->where($array)->get();
-        return $return->result();
-    }
+
     public function SuratMasukB2byId($id)
     {
         $this->db->select('*');
@@ -142,16 +115,7 @@ class Relasi_model extends CI_Model
         $return = $this->db->where($array)->get();
         return $return->result();
     }
-    public function NotifMasukB3()
-    {
-        $this->db->select('*');
-        $this->db->from('disposisi');
-        $this->db->join('surat_masuk', 'surat_masuk.id=disposisi.id_surat_masuk');
-        $this->db->order_by('id_disposisi', 'DESC');
-        $array = array('diteruskan_kepada' => 'Bid. Perencanaan Ekonomi dan Sumber Daya Alam', 'dibaca' => 'N');
-        $return = $this->db->where($array)->get();
-        return $return->result();
-    }
+
     public function SuratMasukB3byId($id)
     {
         $this->db->select('*');
@@ -172,16 +136,7 @@ class Relasi_model extends CI_Model
         $return = $this->db->where($array)->get();
         return $return->result();
     }
-    public function NotifMasukB4()
-    {
-        $this->db->select('*');
-        $this->db->from('disposisi');
-        $this->db->join('surat_masuk', 'surat_masuk.id=disposisi.id_surat_masuk');
-        $this->db->order_by('id_disposisi', 'DESC');
-        $array = array('diteruskan_kepada' => 'Bid. Perencanaan, Pengendalian dan Evaluasi Pembangunan', 'dibaca' => 'N');
-        $return = $this->db->where($array)->get();
-        return $return->result();
-    }
+
     public function SuratMasukB4byId($id)
     {
         $this->db->select('*');

@@ -11,18 +11,8 @@ class Sekertaris extends CI_Controller
         $this->load->model('Surat_masuk_model');
         is_logged_in();
     }
+
     public function index()
-    {
-        $data = [
-            'title' => 'Sekretaris | Surat Masuk',
-            'name' => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
-            'surat_masuk' => $this->Relasi_model->notifDisposisiSekertaris(),
-        ];
-        $this->load->view('layouts/header', $data);
-        $this->load->view('sekertaris/notif', $data);
-        $this->load->view('layouts/footer');
-    }
-    public function dibaca()
     {
         $data = [
             'title' => 'Sekretaris | Surat Masuk',
