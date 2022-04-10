@@ -16,9 +16,7 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>No. </th>
                             <th>Tanggal Surat</th>
-                            <th>Tanggal Disposisi</th>
                             <th>No.Surat</th>
                             <th>Asal Surat</th>
                             <th>Sifat</th>
@@ -28,18 +26,32 @@
                     </thead>
                     <tbody>
                         <?php $i = 1; ?>
-                        <?php foreach ($surat_masuk as $sm) : ?>
+                        <?php foreach ($surat_masuk as $s) : ?>
                             <tr>
-                                <td><?= $i++; ?></td>
-                                <td><?= htmlentities($sm->tanggal_surat) ?></td>
-                                <td><?= htmlentities($sm->tanggal_dikirim) ?></td>
-                                <td><?= htmlentities($sm->nomor_surat) ?></td>
-                                <td><?= htmlentities($sm->asal_surat) ?></td>
-                                <td><?= htmlentities($sm->sifat) ?></td>
-                                <td><?= htmlentities($sm->tindak_lanjut) ?></td>
+                                <td><?= htmlentities($s['tanggal_surat']) ?></td>
+                                <td><?= htmlentities($s['nomor_agenda']) ?></td>
+                                <td><?= htmlentities($s['asal_surat']) ?></td>
+                                <td><?= htmlentities($s['sifat']) ?></td>
+                                <?php if ($s['didisposisi'] == '?') { ?>
+                                    <td>Belum Diproses</td>
+                                <?php } ?>
                                 <td>
                                     <center>
-                                        <a href="<?= base_url("sekertaris/detail/") ?><?= $sm->id_disposisi ?>" type="button" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="auto" title="Disposisi Surat"><i class="far fa-paper-plane"></i></a>
+                                        <a href="<?= base_url("sekertaris/detail2/"); ?><?= $s['id']; ?>" type="button" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="auto" title="Disposisi Surat"><i class="far fa-paper-plane"></i></a>
+                                    </center>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                        <?php foreach ($surat_masuk2 as $s) : ?>
+                            <tr>
+                                <td><?= htmlentities($s->tanggal_surat) ?></td>
+                                <td><?= htmlentities($s->nomor_agenda) ?></td>
+                                <td><?= htmlentities($s->asal_surat) ?></td>
+                                <td><?= htmlentities($s->sifat) ?></td>
+                                <td><?= htmlentities($s->tindak_lanjut) ?></td>
+                                <td>
+                                    <center>
+                                        <a href="<?= base_url("sekertaris/detail/") ?><?= $s->id_disposisi ?>" type="button" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="auto" title="Disposisi Surat"><i class="far fa-paper-plane"></i></a>
                                     </center>
                                 </td>
                             </tr>

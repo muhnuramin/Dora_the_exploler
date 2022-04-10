@@ -1,75 +1,49 @@
 <div class="container-fluid">
-    <?php foreach ($surat_masuk as $s) : ?>
-        <div class="card shadow mb-4">
-            <!-- Card Header - Accordion -->
-            <a href="#previewSurat1" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="previewSurat">
-                <h6 class="m-0 font-weight-bold text-primary">Lembar Disposisi : </h6>
-            </a>
-            <!-- Card Content - Collapse -->
-            <div class="collapse show" id="previewSurat1">
-                <div class="card-body">
-                    <table class="table table-bordered">
-                        <tr>
-                            <td style="width: 50%;">
-                                Surat dari &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <?= htmlentities($s->asal_surat) ?>
-                            </td>
-                            <td style="width: 50%;">Diterima Tanggal &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <?= htmlentities($s->tanggal_diterima) ?></td>
-                        </tr>
-                        <tr>
-                            <td>Tanggal surat &nbsp;&nbsp;: <?= $s->tanggal_surat ?></td>
-                            <td>Nomor Agenda &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <?= htmlentities($s->nomor_agenda) ?></td>
-                        </tr>
-                        <tr>
-                            <td>Diteruskan Oleh &nbsp;&nbsp;: <?= htmlentities($s->diteruskan_oleh) ?></td>
-                            <td>Tanggal Disposisi &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <?= htmlentities($s->tanggal_dikirim) ?></td>
-                        </tr>
-                        <tr>
-                            <td>Nomor Surat &nbsp;&nbsp;: <?= htmlentities($s->nomor_surat) ?></td>
-                            <td>Sifat &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <?= htmlentities($s->sifat) ?></td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">
-                                <p>Perihal :</p>
-                                <div><?= htmlentities($s->perihal) ?></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p>Diteruskan Kepada :</p>
-                                <div><?= $s->diteruskan_kepada ?></div>
-                            </td>
-                            <td>
-                                <p>Dengan Hormat Harap :</p>
-                                <div><?= $s->tindak_lanjut ?></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">
-                                <p>Catatan :</p>
-                                <?php if (file_exists('./' . $s->catatan)) { ?>
-                                    <div><img src="<?= base_url() ?><?= $s->catatan ?>" alt=""></div>
-                                <?php } else { ?>
-                                    <p><?= $s->catatan ?></p>
-                                <?php } ?>
-                            </td>
-                        </tr>
-                    </table>
-                    <a href="<?= base_url('./data/'); ?><?= $s->surat ?>" target="_blank" type="button" class="btn btn-secondary mt-2"><i class="fas fa-envelope-open"> </i> Baca Surat</a>
-                </div>
+    <div class="card shadow mb-4">
+        <!-- Card Header - Accordion -->
+        <a href="#previewSurat" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="previewSurat">
+            <h6 class="m-0 font-weight-bold text-primary">Preview Surat : </h6>
+        </a>
+        <!-- Card Content - Collapse -->
+        <div class="collapse show" id="previewSurat">
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <tr>
+                        <td style="width: 50%;">
+                            Surat dari &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <?= htmlentities($surat_masuk['asal_surat']) ?>
+                        </td>
+                        <td style="width: 50%;">Diterima Tanggal &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <?= htmlentities($surat_masuk['tanggal_diterima']) ?></td>
+                    </tr>
+                    <tr>
+                        <td>Tanggal surat &nbsp;&nbsp;: <?= htmlentities($surat_masuk['tanggal_surat']) ?></td>
+                        <td>Nomor Agenda &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <?= htmlentities($surat_masuk['nomor_agenda']) ?></td>
+                    </tr>
+                    <tr>
+                        <td>Nomor Surat &nbsp;&nbsp;: <?= htmlentities($surat_masuk['nomor_surat']) ?></td>
+                        <td>Sifat &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <?= htmlentities($surat_masuk['sifat']) ?></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <p>Perihal :</p>
+                            <div><?= htmlentities($surat_masuk['perihal']) ?></div>
+                        </td>
+                    </tr>
+                </table>
+                <a href="<?= base_url('./data/'); ?><?= $surat_masuk['surat'] ?>" target="_blank" type="button" class="btn btn-secondary"><i class="fas fa-envelope-open"> </i> Lihat Surat</a>
             </div>
         </div>
-        <!-- Collapsable Card Example -->
-        <div class="card shadow mb-4">
-            <!-- Card Header - Accordion -->
-            <a href="#disposisiSurat" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="disposisiSurat">
-                <h6 class="m-0 font-weight-bold text-primary">Disposisi Surat : </h6>
-            </a>
-            <!-- Card Content - Collapse -->
-            <div class="collapse show" id="disposisiSurat">
-                <div class="card-body">
-                    <form action="<?= base_url('sekertaris/tambahData') ?>" method="post">
-                        <input type="hidden" name="id" value="<?= $s->id_surat_masuk ?>">
-                    <?php endforeach; ?>
+    </div>
+    <!-- Collapsable Card Example -->
+    <div class="card shadow mb-4">
+        <!-- Card Header - Accordion -->
+        <a href="#disposisiSurat" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="disposisiSurat">
+            <h6 class="m-0 font-weight-bold text-primary">Disposisi Surat : </h6>
+        </a>
+        <!-- Card Content - Collapse -->
+        <div class="collapse show" id="disposisiSurat">
+            <div class="card-body">
+                <form action="<?= base_url('sekertaris/tambahData') ?>" method="post">
+                    <input type="hidden" name="id" value="<?= $surat_masuk['id'] ?>">
                     <h6><b>Diteruskan Kepada</b></h6>
                     <div class="row">
                         <div class="col">
@@ -121,6 +95,7 @@
                             Koordinasi / Konfirmasikan
                         </label>
                     </div>
+
                     <h6 class="mt-3"><b>Catatan</b></h6>
                     <div class="accordion" id="accordionExample">
                         <div class="card">
@@ -162,11 +137,10 @@
                     <div id="ttd" class="btn btn-primary btn-sm"><i class="fas fa-save"></i> Simpan</div>
                     <textarea id="signature64" name="signed" style="display: none"></textarea><br><br>
                     <button id="proses" type="submit" class="btn btn-primary mt-2" disabled>Proses</button>
-
-                    </form>
-                </div>
+                </form>
             </div>
         </div>
+    </div>
 </div>
 <script>
     var sig2 = $('#sig2').signature({
@@ -189,11 +163,16 @@
         sig.signature('clear');
         $("#signature64").val('');
     });
+
     const ttd = document.getElementById('ttd')
     const proses = document.getElementById('proses')
+    const limpah = document.getElementById('limpah')
+    const link = document.getElementById('link')
+    const perihal = document.getElementById('perihal')
 
     ttd.addEventListener('click', function() {
         alert('Tanda tangan berhasil disimpan')
         proses.removeAttribute('disabled')
+        limpah.removeAttribute('disabled')
     })
 </script>

@@ -19,10 +19,19 @@ class Surat_masuk_model extends CI_model
         $query = $this->db->get();
         return $query->result_array();
     }
+    public function bacaSuratSekertaris()
+    {
+        $this->db->from('surat_masuk');
+        $this->db->order_by('id', 'DESC');
+        $this->db->where('didisposisi', '?');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
     public function getSuratById($id)
     {
         return $this->db->get_where('surat_masuk', ['id' => $id])->row_array();
     }
+
     public function delete($id)
     {
         $this->db->where('id', $id);

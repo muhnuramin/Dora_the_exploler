@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Data Surat Masuk</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Riwayat Disposisi</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -17,6 +17,7 @@
                             <th>Tindak Lanjut</th>
                             <th>Catatan</th>
                             <th>Catatan Bidang</th>
+                            <th>Disposisi Ulang</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -45,7 +46,33 @@
                                 <?php } else { ?>
                                     <td><?= htmlentities($rs->catatan_bidang) ?></td>
                                 <?php } ?>
+                                <td>
+                                    <center>
+                                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
+                                            <i class="fas fa-paper-plane"></i>
+                                        </button>
+                                    </center>
+                                </td>
                             </tr>
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Apakah anda yakin ingin disposisi ulang surat ?</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            jika anda ingin mendisposisikan ulang surat, maka disposisi sebelumnya akan terhapus
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                            <a href="<?= base_url("sekertaris/disposisiulang/") ?><?= $rs->id_surat_masuk ?>" type="button" class="btn btn-primary">Lanjutkan</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         <?php endforeach; ?>
                     </tbody>
                 </table>

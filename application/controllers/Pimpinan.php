@@ -28,7 +28,7 @@ class Pimpinan extends CI_Controller
     {
         is_logged_in();
         $data = [
-            'title' => 'Disposisi Surat',
+            'title' => 'Pimpinan | Disposisi Surat',
             'surat_masuk' => $this->Surat_masuk_model->getSuratById($id),
             'name' => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
         ];
@@ -40,7 +40,7 @@ class Pimpinan extends CI_Controller
     public function disposisiulang($id)
     {
         $data = [
-            'title' => 'Disposisi Ulang Surat',
+            'title' => 'Pimpinan | Disposisi Ulang Surat',
             'surat_masuk' => $this->Surat_masuk_model->getSuratById($id),
             'name' => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
         ];

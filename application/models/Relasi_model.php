@@ -29,7 +29,7 @@ class Relasi_model extends CI_Model
         $this->db->from('disposisi');
         $this->db->join('surat_masuk', 'surat_masuk.id=disposisi.id_surat_masuk');
         $this->db->order_by('id_disposisi', 'DESC');
-        $array = array('diteruskan_kepada' => 'Sekretaris', 'didisposisi' => 'N');
+        $array = array('diteruskan_kepada' => 'Sekretaris');
         $return = $this->db->where($array)->get();
         return $return->result();
     }
