@@ -54,6 +54,16 @@
                                 <?php } ?>
                             </td>
                         </tr>
+                        <tr>
+                            <td colspan="2">
+                                <p>Catatan Kepala Bidang:</p>
+                                <?php if (file_exists('./' . $s->catatan_bidang)) { ?>
+                                    <div><img src="<?= base_url() ?><?= $s->catatan_bidang ?>" width="900" height="200"></div>
+                                <?php } else { ?>
+                                    <p><?= $s->catatan_bidang ?></p>
+                                <?php } ?>
+                            </td>
+                        </tr>
                     </table>
                 </div>
             </div>

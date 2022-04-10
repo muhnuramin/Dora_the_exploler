@@ -49,7 +49,7 @@ class Relasi_model extends CI_Model
         $this->db->from('disposisi');
         $this->db->join('surat_masuk', 'surat_masuk.id=disposisi.id_surat_masuk');
         $this->db->order_by('id_disposisi', 'DESC');
-        $array = array('diteruskan_kepada' => 'Bid. Infrastruktur dan Kewilayahan', 'dibaca' => 'Y');
+        $array = array('diteruskan_kepada' => 'Bid. Infrastruktur dan Kewilayahan');
         $return = $this->db->where($array)->get();
         return $return->result();
     }
@@ -90,7 +90,7 @@ class Relasi_model extends CI_Model
         $this->db->from('disposisi');
         $this->db->join('surat_masuk', 'surat_masuk.id=disposisi.id_surat_masuk');
         $this->db->order_by('id_disposisi', 'DESC');
-        $array = array('diteruskan_kepada' => 'Bid. Pemerintahan dan Pembangunan Manusia', 'dibaca' => 'Y');
+        $array = array('diteruskan_kepada' => 'Bid. Pemerintahan dan Pembangunan Manusia');
         $return = $this->db->where($array)->get();
         return $return->result();
     }
@@ -111,7 +111,7 @@ class Relasi_model extends CI_Model
         $this->db->from('disposisi');
         $this->db->join('surat_masuk', 'surat_masuk.id=disposisi.id_surat_masuk');
         $this->db->order_by('id_disposisi', 'DESC');
-        $array = array('diteruskan_kepada' => 'Bid. Perencanaan Ekonomi dan Sumber Daya Alam', 'dibaca' => 'Y');
+        $array = array('diteruskan_kepada' => 'Bid. Perencanaan Ekonomi dan Sumber Daya Alam');
         $return = $this->db->where($array)->get();
         return $return->result();
     }
@@ -132,7 +132,7 @@ class Relasi_model extends CI_Model
         $this->db->from('disposisi');
         $this->db->join('surat_masuk', 'surat_masuk.id=disposisi.id_surat_masuk');
         $this->db->order_by('id_disposisi', 'DESC');
-        $array = array('diteruskan_kepada' => 'Bid. Perencanaan, Pengendalian dan Evaluasi Pembangunan', 'dibaca' => 'Y');
+        $array = array('diteruskan_kepada' => 'Bid. Perencanaan, Pengendalian dan Evaluasi Pembangunan');
         $return = $this->db->where($array)->get();
         return $return->result();
     }
@@ -143,7 +143,7 @@ class Relasi_model extends CI_Model
         $this->db->from('disposisi');
         $this->db->join('surat_masuk', 'surat_masuk.id=disposisi.id_surat_masuk');
         $this->db->order_by('id_disposisi', 'DESC');
-        $array = array('diteruskan_kepada' => 'Bid. Perencanaan, Pengendalian dan Evaluasi Pembangunan', 'id_disposisi' => $id);
+        $array = array('diteruskan_kepada' => 'Bid. Perencanaan, Pengendalian dan Evaluasi Pembangunan');
         $return = $this->db->where($array)->get();
         return $return->result();
     }
