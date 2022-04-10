@@ -51,7 +51,10 @@
                                 <td><?= htmlentities($s->tindak_lanjut) ?></td>
                                 <td>
                                     <center>
-                                        <a href="<?= base_url("sekertaris/detail/") ?><?= $s->id_disposisi ?>" type="button" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="auto" title="Disposisi Surat"><i class="far fa-paper-plane"></i></a>
+                                        <form method="POST" action="<?= base_url('sekertaris/detail'); ?>">
+                                            <input type="hidden" name="id_disposisi" value="<?= $s->id_disposisi ?>">
+                                            <button type="submit" class="btn btn-success btn-sm">Detail</button>
+                                        </form>
                                     </center>
                                 </td>
                             </tr>

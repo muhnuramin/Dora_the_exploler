@@ -37,7 +37,10 @@
                                 <td><?= htmlentities($s->perihal) ?></td>
                                 <td>
                                     <center>
-                                        <a href="<?= base_url('bidang3/detail/'); ?><?= $s->id_disposisi ?>" type="button" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="auto" title="Detail Surat">Detail</a>
+                                        <form method="POST" action="<?= base_url('bidang3/detail'); ?>">
+                                            <input type="hidden" name="id_disposisi" value="<?= $s->id_disposisi ?>">
+                                            <button type="submit" class="btn btn-success btn-sm">Detail</button>
+                                        </form>
                                     </center>
                                 </td>
                             </tr>
