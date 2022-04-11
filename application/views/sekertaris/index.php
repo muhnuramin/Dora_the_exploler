@@ -53,7 +53,7 @@
                                     <center>
                                         <form method="POST" action="<?= base_url('sekertaris/detail'); ?>">
                                             <input type="hidden" name="id_disposisi" value="<?= $s->id_disposisi ?>">
-                                            <button type="submit" class="btn btn-success btn-sm">Detail</button>
+                                            <button type="submit" class="btn btn-success btn-sm"><i class="fas fa-paper-plane"></i></button>
                                         </form>
                                     </center>
                                 </td>

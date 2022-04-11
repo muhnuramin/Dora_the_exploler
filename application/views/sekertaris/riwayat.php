@@ -47,11 +47,19 @@
                                     <td><?= htmlentities($rs->catatan_bidang) ?></td>
                                 <?php } ?>
                                 <td>
-                                    <center>
-                                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
-                                            <i class="fas fa-paper-plane"></i>
-                                        </button>
-                                    </center>
+                                    <?php if ($rs->diteruskan_oleh == "Sekretaris") {  ?>
+                                        <center>
+                                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
+                                                <i class="fas fa-paper-plane"></i>
+                                            </button>
+                                        </center>
+                                    <?php } else { ?>
+                                        <center>
+                                            <button type="button" class="btn btn-primary btn-sm d-none" data-toggle="modal" data-target="#exampleModal">
+                                                <i class="fas fa-paper-plane"></i>
+                                            </button>
+                                        </center>
+                                    <?php } ?>
                                 </td>
                             </tr>
                             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
