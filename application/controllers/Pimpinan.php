@@ -155,6 +155,8 @@ class Pimpinan extends CI_Controller
             file_put_contents($file, $imageDecode);
         }
 
+        $nameCatatan = $this->input->post('catatan', true);
+
         if ($this->input->post('image_catatan') != '-') {
             $image = $this->input->post('image_catatan');
             $imageDecode = base64_decode($image);
@@ -162,8 +164,6 @@ class Pimpinan extends CI_Controller
             $file = $folder2 . uniqid() . '.png';
             $nameCatatan = $file;
             file_put_contents($file, $imageDecode);
-        } else {
-            $nameCatatan = $this->input->post('catatan', true);
         }
 
         $data = [
