@@ -67,6 +67,7 @@
                                             jika anda ingin mendisposisikan ulang surat, maka disposisi sebelumnya akan terhapus
                                         </div>
                                         <div class="modal-footer">
+
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
                                             <a href="<?= base_url("pimpinan/disposisiulang/") ?><?= $rs->id_surat_masuk ?>" type="button" class="btn btn-primary">Lanjutkan</a>
                                         </div>

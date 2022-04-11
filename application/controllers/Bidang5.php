@@ -22,14 +22,20 @@ class Bidang5 extends CI_Controller
         $this->load->view('bidang/bidang5', $data);
         $this->load->view('layouts/footer');
     }
-    public function detail($id)
+    public function detail()
     {
+        $id_disposisi = $this->input->post('id_disposisi');
+        $date = date('Y-m-d-h-i-s');
         $data = [
             'title' => 'Detail Surat Masuk',
-            'surat_masuk' => $this->Relasi_model->SuratMasukB4byId($id),
+            'surat_masuk' => $this->Relasi_model->SuratMasukB4byId($id_disposisi),
             'name' => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
         ];
-        //$data['surat_masuk'] = $this->Surat_masuk_model->getSuratById($id);
+        $data2 = [
+            'tanggal_dibaca' => $date,
+        ];
+        $this->db->where('id_disposisi', $this->input->post('id_disposisi'));
+        $this->db->update('disposisi', $data2);
         $this->load->view('layouts/header', $data);
         $this->load->view('bidang/detail/detail5', $data);
         $this->load->view('layouts/footer');
@@ -66,7 +72,7 @@ class Bidang5 extends CI_Controller
     }
     public function catatan()
     {
-        $folderPath = "catatan/";
+        $folderPath = "upload/catatan/";
         $image_parts = explode(";base64,", $_POST['catatan']);
         $image_type_aux = explode("image/", $image_parts[0]);
         $image_type = $image_type_aux[1];
@@ -85,6 +91,6 @@ class Bidang5 extends CI_Controller
         $this->session->set_flashdata('flash', 'diinput');
         $this->db->where('id_disposisi', $this->input->post('id'));
         $this->db->update('disposisi', $data);
-        redirect('bidang5');
+        redirect('bidang5/index');
     }
 }

@@ -53,7 +53,7 @@ class Pimpinan extends CI_Controller
         $this->load->view('pimpinan/detail');
         $this->load->view('layouts/footer');
 
-        $this->db->delete('disposisi', ['id_surat_masuk' => $id, 'diteruskan_oleh' => 'Pimpinan']);
+        $this->db->delete('disposisi', ['id_surat_masuk' => $id]);
     }
     public function tambahData()
     {
