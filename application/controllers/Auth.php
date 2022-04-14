@@ -65,6 +65,8 @@ class Auth extends CI_Controller
                     redirect('staf4');
                 } else if ($user['role_id'] == 11) {
                     redirect('staf5');
+                } else if ($user['role_id'] == 12) {
+                    redirect('staf6');
                 } else {
                     redirect('home');
                 }

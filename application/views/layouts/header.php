@@ -164,7 +164,7 @@
                     Staf Bid. Infrastruktur dan Kewilayahan
                 </div>
                 <li class="nav-item">
-                    <a class="nav-link" href=<?= base_url("bidang5/index") ?>>
+                    <a class="nav-link" href=<?= base_url("staf2/index") ?>>
                         <i class="fas fa-bell"></i>
                         <span>Surat Masuk</span></a>
                 </li>
@@ -175,7 +175,7 @@
                     Staf Bid. Pemerintahan dan Pembangunan Manusia
                 </div>
                 <li class="nav-item">
-                    <a class="nav-link" href=<?= base_url("bidang5/index") ?>>
+                    <a class="nav-link" href=<?= base_url("staf3/index") ?>>
                         <i class="fas fa-bell"></i>
                         <span>Surat Masuk</span></a>
                 </li>
@@ -186,7 +186,7 @@
                     Staf Bid. Perencanaan Ekonomi dan Sumber Daya Alam
                 </div>
                 <li class="nav-item">
-                    <a class="nav-link" href=<?= base_url("bidang5/index") ?>>
+                    <a class="nav-link" href=<?= base_url("staf4/index") ?>>
                         <i class="fas fa-bell"></i>
                         <span>Surat Masuk</span></a>
                 </li>
@@ -197,7 +197,18 @@
                     Staf Bid. Perencanaan, Pengendalian dan Evaluasi Pembangunan
                 </div>
                 <li class="nav-item">
-                    <a class="nav-link" href=<?= base_url("bidang5/index") ?>>
+                    <a class="nav-link" href=<?= base_url("staf5/index") ?>>
+                        <i class="fas fa-bell"></i>
+                        <span>Surat Masuk</span></a>
+                </li>
+            <?php } ?>
+            <?php if ($this->session->userdata('role_id') == 12) { ?>
+                <hr class="sidebar-divider my-0">
+                <div class="sidebar-heading mt-1 text-light">
+                    Staf Sekretaris
+                </div>
+                <li class="nav-item">
+                    <a class="nav-link" href=<?= base_url("staf6/index") ?>>
                         <i class="fas fa-bell"></i>
                         <span>Surat Masuk</span></a>
                 </li>

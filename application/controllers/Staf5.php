@@ -14,7 +14,7 @@ class Staf5 extends CI_Controller
     public function index()
     {
         $data = [
-            'title' => 'Staf Bid. Infrastruktur dan Kewilayahan | Surat Masuk',
+            'title' => 'Staf Bid. Perencanaan, Pengendalian dan Evaluasi Pembangunan | Surat Masuk',
             'name' => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
             'surat_masuk' => $this->Relasi_model->SuratMasukB4(),
         ];
@@ -26,7 +26,7 @@ class Staf5 extends CI_Controller
     {
         $data = [
             'title' => 'Detail Surat Masuk',
-            'surat_masuk' => $this->Relasi_model->SuratMasukB1byId($id),
+            'surat_masuk' => $this->Relasi_model->SuratMasukB4byId($id),
             'name' => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
         ];
         //$data['surat_masuk'] = $this->Surat_masuk_model->getSuratById($id);
