@@ -22,7 +22,7 @@ class Bidang3 extends CI_Controller
         $this->load->view('bidang/bidang3', $data);
         $this->load->view('layouts/footer');
     }
-    public function detail($id)
+    public function detail()
     {
         $id_disposisi = $this->input->post('id_disposisi');
         $date = date('Y-m-d-h-i-s');
