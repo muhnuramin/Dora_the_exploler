@@ -28,6 +28,7 @@
                             <option value="9">Staf Bid. Pemerintahan dan Pembangunan Manusia</option>
                             <option value="10">Staf Bid. Perencanaan Ekonomi dan Sumber Daya Alam</option>
                             <option value="11">Staf Bid. Perencanaan, Pengendalian dan Evaluasi Pembangunan</option>
+                            <option value="12">Staf Sekretaris</option>
                         </select>
                     </div>
                     <div class="row">

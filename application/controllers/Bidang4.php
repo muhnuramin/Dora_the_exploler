@@ -13,7 +13,7 @@ class Bidang4 extends CI_Controller
     public function index()
     {
         $data = [
-            'title' => 'Bid. Infrastruktur dan Kewilayahan | Surat Masuk',
+            'title' => 'Bid. Perencanaan Ekonomi dan Sumber Daya Alam | Surat Masuk',
             'name' => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
             'surat_masuk' => $this->Relasi_model->SuratMasukB3(),
         ];

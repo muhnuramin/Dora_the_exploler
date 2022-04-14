@@ -47,6 +47,12 @@
                     <h6><b>Diteruskan Kepada</b></h6>
                     <div class="row">
                         <div class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="Sekretaris" id="sekretaris" name="diteruskan[]">
+                                <label class="form-check-label" for="sekretaris">
+                                    Sekretaris
+                                </label>
+                            </div>
                             <div class="form-check mt-2">
                                 <input class="form-check-input" type="checkbox" value="Bid. Infrastruktur dan Kewilayahan" id="infrastruktur" name="diteruskan[]">
                                 <label class="form-check-label" for="infrastruktur">
