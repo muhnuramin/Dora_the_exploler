@@ -5,8 +5,8 @@ class Disposisi_model extends CI_model
     public function riwayatSuratDisposisi()
     {
         $filter = array(
-            'd.id_disposisi', 'd.diteruskan_kepada', 'd.tanda_tangan', 'd.tindak_lanjut', 'd.catatan', 'd.catatan_bidang', 'd.diteruskan_oleh', 'd.tanggal_dibaca', 'd.dibaca', 'd.tanggal_dikirim',
-            's.id', 's.asal_surat', 's.nomor_surat', 's.nomor_agenda', 's.tanggal_surat', 's.tanggal_diterima', 's.sifat', 's.perihal', 's.surat', 's.dilihat'
+            'd.id_disposisi', 'd.diteruskan_kepada', 'd.tanda_tangan', 'd.tindak_lanjut', 'd.catatan', 'd.catatan_bidang', 'd.diteruskan_oleh', 'd.tanggal_dibaca', 'd.tanggal_dikirim',
+            's.id', 's.asal_surat', 's.nomor_surat', 's.nomor_agenda', 's.tanggal_surat', 's.tanggal_diterima', 's.sifat', 's.perihal', 's.surat', 's.didisposisi'
         );
 
         $this->db->select($filter);
@@ -21,8 +21,8 @@ class Disposisi_model extends CI_model
     public function suratDisposisiById($id)
     {
         $filter = array(
-            'd.id_disposisi', 'd.diteruskan_kepada', 'd.tanda_tangan', 'd.tindak_lanjut', 'd.catatan', 'd.catatan_bidang', 'd.diteruskan_oleh', 'd.tanggal_dibaca', 'd.dibaca', 'd.tanggal_dikirim',
-            's.id', 's.asal_surat', 's.nomor_surat', 's.nomor_agenda', 's.tanggal_surat', 's.tanggal_diterima', 's.sifat', 's.perihal', 's.surat', 's.dilihat'
+            'd.id_disposisi', 'd.diteruskan_kepada', 'd.tanda_tangan', 'd.tindak_lanjut', 'd.catatan', 'd.catatan_bidang', 'd.diteruskan_oleh', 'd.tanggal_dibaca', 'd.tanggal_dikirim',
+            's.id', 's.asal_surat', 's.nomor_surat', 's.nomor_agenda', 's.tanggal_surat', 's.tanggal_diterima', 's.sifat', 's.perihal', 's.surat', 's.didisposisi'
         );
 
         $this->db->select($filter);
@@ -36,8 +36,8 @@ class Disposisi_model extends CI_model
     public function suratDisposisiByUser($id)
     {
         $filter = array(
-            'd.id_disposisi', 'd.diteruskan_kepada', 'd.tanda_tangan', 'd.tindak_lanjut', 'd.catatan', 'd.catatan_bidang', 'd.diteruskan_oleh', 'd.tanggal_dibaca', 'd.dibaca', 'd.tanggal_dikirim',
-            's.id', 's.asal_surat', 's.nomor_surat', 's.nomor_agenda', 's.tanggal_surat', 's.tanggal_diterima', 's.sifat', 's.perihal', 's.surat', 's.dilihat'
+            'd.id_disposisi', 'd.diteruskan_kepada', 'd.tanda_tangan', 'd.tindak_lanjut', 'd.catatan', 'd.catatan_bidang', 'd.diteruskan_oleh', 'd.tanggal_dibaca', 'd.tanggal_dikirim',
+            's.id', 's.asal_surat', 's.nomor_surat', 's.nomor_agenda', 's.tanggal_surat', 's.tanggal_diterima', 's.sifat', 's.perihal', 's.surat', 's.didisposisi'
         );
 
         $this->db->select($filter);

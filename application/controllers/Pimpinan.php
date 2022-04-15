@@ -176,8 +176,7 @@ class Pimpinan extends CI_Controller
             'tanggal_dikirim' => $time,
             'diteruskan_oleh' => $this->input->post('diteruskan_oleh', true),
             'tanggal_dibaca' => '-',
-            'catatan_bidang' => $this->input->post('catatan_bidang', true),
-            'dibaca' => 'N'
+            'catatan_bidang' => $this->input->post('catatan_bidang', true)
         ];
 
         if (count($arrRole) > 1) {
@@ -209,7 +208,22 @@ class Pimpinan extends CI_Controller
             }
         }
 
+        $this->db->where('id', $this->input->post('id_surat_masuk', true));
+        $this->db->update('surat_masuk', ['didisposisi' => 'Y']);
+
         echo 'berhasil';
+    }
+
+    public function perbaruiSuratMasuk()
+    {
+        $data = [
+            'didisposisi' => $this->input->post('status_disposisi'),
+        ];
+
+        $this->db->where('id', $this->input->post('id'));
+        $this->db->update('surat_masuk', $data);
+
+        return json_encode('surat masuk berhasil diperbarui');
     }
 
     public function perbaruiDisposisi()
@@ -217,11 +231,9 @@ class Pimpinan extends CI_Controller
         $post_id = $this->input->post('id_disposisi');
         $post_catatan = $this->input->post('catatan_bidang');
         $post_readat = $this->input->post('read_at');
-        $post_isread = $this->input->post('is_read');
 
-        if ($post_isread != null) {
+        if ($post_readat != null) {
             $this->db->set('tanggal_dibaca', $post_readat);
-            $this->db->set('dibaca', $post_isread);
         } else if ($post_catatan != null) {
             $this->db->set('catatan_bidang', $post_catatan);
         }
@@ -229,6 +241,14 @@ class Pimpinan extends CI_Controller
         $this->db->update('disposisi');
 
         echo json_encode('berhasil');
+    }
+
+    public function hapusDisposisi()
+    {
+        $user = $this->input->post('user');
+        $id_surat = $this->input->post('id');
+
+        $this->db->delete('disposisi', ['id_surat_masuk' => $id_surat, 'diteruskan_oleh' => $user]);
     }
 
     public function cariAtauTambah()

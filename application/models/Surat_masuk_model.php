@@ -2,13 +2,28 @@
 
 class Surat_masuk_model extends CI_model
 {
+    // public function getAllSurat()
+    // {
+    //     $this->db->from('surat_masuk');
+    //     $this->db->order_by('id', 'DESC');
+    //     $query = $this->db->get();
+    //     return $query->result_array();
+    // }
     public function getAllSurat()
     {
-        // return $this->db->get('surat_masuk')->result_array();
-        $this->db->from('surat_masuk');
-        $this->db->order_by('id', 'DESC');
-        $query = $this->db->get();
-        return $query->result_array();
+        if ($this->input->post('user_role') == "Pimpinan") {
+            $this->db->from('surat_masuk');
+            $this->db->order_by('id', 'DESC');
+            $this->db->where('didisposisi', 'N');
+            $query = $this->db->get();
+            return $query->result_array();
+        } else {
+            $this->db->from('surat_masuk');
+            $this->db->order_by('id', 'DESC');
+            $this->db->where('didisposisi', '?');
+            $query = $this->db->get();
+            return $query->result_array();
+        }
     }
 
     public function bacaSurat()
