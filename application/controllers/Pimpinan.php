@@ -57,6 +57,8 @@ class Pimpinan extends CI_Controller
     }
     public function tambahData()
     {
+        $this->load->helper('push_notification');
+
         $date = date('Y-m-d-h-i-s');
         $folderPath2 = "upload/";
         $image_parts2 = explode(";base64,", $_POST['signed']);
@@ -94,6 +96,7 @@ class Pimpinan extends CI_Controller
                 'diteruskan_oleh' => 'Pimpinan',
             ];
             $this->db->insert('disposisi', $data);
+
             $data2 = [
                 'didisposisi' => 'Y',
             ];
