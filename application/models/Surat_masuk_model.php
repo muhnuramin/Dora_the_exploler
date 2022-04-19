@@ -10,7 +10,7 @@ class Surat_masuk_model extends CI_model
             $this->db->where('didisposisi', 'N');
             $query = $this->db->get();
             return $query->result_array();
-        } else if ($this->input->post('user_role' == "Sekretaris")) {
+        } else if ($this->input->post('user_role') == "Sekretaris") {
             $this->db->from('surat_masuk');
             $this->db->order_by('id', 'DESC');
             $this->db->where('didisposisi', '?');
