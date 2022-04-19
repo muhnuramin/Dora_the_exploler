@@ -42,8 +42,8 @@ class Home extends CI_Controller
 
     public function tambahData()
     {
-        is_logged_in();
         $this->load->helper('push_notification');
+        is_logged_in();
 
         $data['surat'] = '';
         $surat = $_FILES['surat']['name'];
@@ -73,7 +73,7 @@ class Home extends CI_Controller
         }
         $this->db->insert('surat_masuk', $data);
 
-        // $latest_surat = $this->db('surat_masuk')->
+        $last_id = $this->db->insert_id();
 
         $users = $this->User_model->getAllUser();
         $roles = $this->db->get('roles')->result_array();
@@ -81,22 +81,13 @@ class Home extends CI_Controller
         // dapatkan semua data user
         foreach ($users as $user) {
             foreach ($roles as $role) {
-                // cari role yang namanya 'Pimpinan'
-                if ($role['nama_role'] == 'Pimpinan') {
+                if ($role['nama_role'] == "Pimpinan") {
                     if ($user['role_id'] == $role['role_id']) {
-                        // sendPush(fcm token, title, subtitle, '@mipmap/ic_launcher', body, type=surat_masuk/disposisi, id surat/disposisi terakhir);
-                        sendPush($user['fcm_token'], 'Surat baru diterima', 'Dari: ' . $data['asal_surat'], '@mipmap/ic_launcher', $data['perihal'], 'surat_masuk', $this->db->insert_id());
+                        sendPush($user['fcm_token'], 'Surat baru diterima', 'Dari: ' . $data['asal_surat'], '@mipmap/ic_launcher', $data['perihal'], 'surat_masuk', $last_id);
                     }
-                    break;
                 }
             }
         }
-
-        // foreach ($users as $user) {
-        //     if ($user['has_app'] != 0) {
-        //         sendPush($user['fcm_token'], 'Surat baru diterima', 'Dari: ' . $data['asal_surat'], '@mipmap/ic_launcher', $data['perihal'], 'surat_masuk', $this->db->insert_id());
-        //     }
-        // }
 
         redirect('home');
     }
