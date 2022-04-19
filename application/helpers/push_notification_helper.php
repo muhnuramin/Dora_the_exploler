@@ -43,6 +43,8 @@ function sendPush($to, $title, $body, $icon, $url, $type, $id)
     } else return false;
 }
 
+// sendPush(fcm token, title, subtitle, '@mipmap/ic_launcher', body, type=surat_masuk/disposisi, id surat/disposisi terakhir);
+
 // $keyclient = 'eQW_8AV1T5iZUZ8VWGaEh1:APA91bFDJ7xQvPXG6Ev5H8i4cN9Rv7OZmJVMpI6cX2UpZokJoooPSfw3WMOizraSxi_vBWWP_evl8f4t1Bxwx52WmOMTcpJwMk7z0ujq_buZDZ1H1BnrzLBvPsZQohj0BF46Rp8NkG8F';
 
 // sendPush($keyclient, 'Ridlo', 'And this is the text.', 'https://www.gstatic.com/mobilesdk/160503_mobilesdk/logo/2x/firebase_28dp.png', 'https://google.co.id/');
