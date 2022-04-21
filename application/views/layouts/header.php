@@ -73,7 +73,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href=<?= base_url("surat_diteruskan/index") ?>>
                         <i class="fas fa-paper-plane"></i>
-                        <span>Surat Diteruskan</span></a>
+                        <span>Riwayat Disposisi</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href=<?= base_url("user/index") ?>>

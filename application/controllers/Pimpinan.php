@@ -277,4 +277,13 @@ class Pimpinan extends CI_Controller
             echo json_encode($cek);
         }
     }
+    public function print($id)
+    {
+        $data = [
+            'surat_masuk' => $this->Relasi_model->SuratMasukbyId($id),
+            'name' => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
+        ];
+
+        $this->load->view('pimpinan/print', $data);
+    }
 }
