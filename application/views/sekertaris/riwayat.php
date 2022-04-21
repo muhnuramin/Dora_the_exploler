@@ -17,6 +17,7 @@
                             <th>Tindak Lanjut</th>
                             <th>Catatan</th>
                             <th>Catatan Bidang</th>
+                            <th>Print</th>
                             <th>Disposisi Ulang</th>
                         </tr>
                     </thead>
@@ -46,7 +47,10 @@
                                 <?php } else { ?>
                                     <td><?= htmlentities($rs->catatan_bidang) ?></td>
                                 <?php } ?>
-                                <td>
+                                <td class="align-middle">
+                                    <a href="<?= base_url('sekertaris/print/'); ?><?= $rs->id_disposisi ?>" target="_BLANK" type="button" class="btn btn-success"><i class="fas fa-print"></i> Print Lembar Disposisi</a><br><br>
+                                </td>
+                                <td class="align-middle">
                                     <?php if ($rs->diteruskan_oleh == "Sekretaris") {  ?>
                                         <center>
                                             <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
