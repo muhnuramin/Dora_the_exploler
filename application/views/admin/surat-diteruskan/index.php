@@ -17,6 +17,7 @@
                             <th>Diteruskan Kepada</th>
                             <th>Tanggal Dibaca</th>
                             <th>TTD</th>
+                            <th>Detail</th>
                             <th>Print</th>
                         </tr>
                     </thead>
@@ -35,10 +36,14 @@
                                 <?php else : ?>
                                     <td class="text-success"><?= htmlentities($sd->tanggal_dibaca) ?></td>
                                 <?php endif; ?>
-                                <td class="align-middle" scope="row"><img src="<?= base_url() ?><?= $sd->tanda_tangan ?>" width="100"></td>
-                                <td>
+                                <td class="align-middle" scope="row"><img src="<?= base_url() ?><?= $sd->tanda_tangan ?>" width="100" height="100"></td>
+                                <td class="align-middle">
+                                    <center>
+                                        <a href="<?= base_url('surat_diteruskan/detail/'); ?><?= $sd->id_disposisi ?>" class="btn btn-success btn-sm">Detail</a>
+                                    </center>
+                                </td>
+                                <td class="align-middle">
                                     <a href="<?= base_url('surat_diteruskan/print/'); ?><?= $sd->id_disposisi ?>" target="_BLANK" type="button" class="btn btn-success"><i class="fas fa-print"></i> Print Lembar Disposisi</a><br><br>
-
                                 </td>
                             </tr>
                         <?php endforeach; ?>
