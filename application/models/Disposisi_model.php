@@ -12,8 +12,8 @@ class Disposisi_model extends CI_model
         $this->db->select($filter);
         $this->db->from('disposisi as d');
         $this->db->join('surat_masuk as s', 's.id=d.id_surat_masuk');
-        // $this->db->order_by('d.id_disposisi', 'DESC');
-        $this->db->order_by('d.updated_at', 'DESC');
+        $this->db->order_by('d.id_disposisi', 'DESC');
+        // $this->db->order_by('d.updated_at', 'DESC');
         // $return = $this->db->where('diteruskan_oleh', $user)->get('');
         $return = $this->db->get('');
         return $return->result_array();
@@ -44,6 +44,7 @@ class Disposisi_model extends CI_model
         $this->db->select($filter);
         $this->db->from('disposisi as d');
         $this->db->join('surat_masuk as s', 's.id=d.id_surat_masuk');
+        $this->db->order_by('d.id_disposisi', 'DESC');
         $this->db->where('d.diteruskan_kepada', $id);
         $return = $this->db->get();
         return $return->result_array();
