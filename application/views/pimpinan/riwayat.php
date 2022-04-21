@@ -17,6 +17,7 @@
                             <th>Tindak Lanjut</th>
                             <th>Catatan</th>
                             <th>Catatan Bidang</th>
+                            <th>Print</th>
                             <th>Disposisi Ulang</th>
                         </tr>
                     </thead>
@@ -46,6 +47,9 @@
                                 <?php } else { ?>
                                     <td><?= htmlentities($rs->catatan_bidang) ?></td>
                                 <?php } ?>
+                                <td class="align-middle">
+                                    <a href="<?= base_url('pimpinan/print/'); ?><?= $rs->id_disposisi ?>" target="_BLANK" type="button" class="btn btn-success"><i class="fas fa-print"></i> Print Lembar Disposisi</a><br><br>
+                                </td>
                                 <td>
                                     <center>
                                         <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
