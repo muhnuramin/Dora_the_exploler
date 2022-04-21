@@ -32,4 +32,16 @@ class Surat_diteruskan extends CI_Controller
         //$data['surat_masuk'] = $this->Surat_masuk_model->getSuratById($id);
         $this->load->view('admin/print', $data);
     }
+
+    public function detail($id)
+    {
+        $data = [
+            'title' => 'Detail Surat Masuk',
+            'surat_masuk' => $this->Relasi_model->SuratMasukbyId($id),
+            'name' => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
+        ];
+        $this->load->view('layouts/header', $data);
+        $this->load->view('admin/surat-diteruskan/detail');
+        $this->load->view('layouts/footer');
+    }
 }
