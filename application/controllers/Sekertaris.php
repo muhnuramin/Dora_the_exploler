@@ -131,4 +131,13 @@ class Sekertaris extends CI_Controller
         $this->load->view('sekertaris/riwayat', $data);
         $this->load->view('layouts/footer');
     }
+    public function print($id)
+    {
+        $data = [
+            'surat_masuk' => $this->Relasi_model->SuratMasukbyId($id),
+            'name' => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
+        ];
+
+        $this->load->view('sekertaris/print', $data);
+    }
 }

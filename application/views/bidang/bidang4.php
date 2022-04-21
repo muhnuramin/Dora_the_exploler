@@ -29,12 +29,21 @@
                         <?php $i = 1; ?>
                         <?php foreach ($surat_masuk as $s) : ?>
                             <tr>
-                                <td><?= $i++; ?></td>
-                                <td><?= htmlentities($s->tanggal_dikirim) ?></td>
-                                <td><?= htmlentities($s->diteruskan_oleh) ?></td>
-                                <td><?= htmlentities($s->asal_surat) ?></td>
-                                <td><?= htmlentities($s->sifat) ?></td>
-                                <td><?= htmlentities($s->perihal) ?></td>
+                                <?php if ($s->tanggal_dibaca == '0000-00-00') : ?>
+                                    <td class="text-danger"><?= $i++; ?></td>
+                                    <td class="text-danger"><?= htmlentities($s->tanggal_dikirim) ?></td>
+                                    <td class="text-danger"><?= htmlentities($s->diteruskan_oleh) ?></td>
+                                    <td class="text-danger"><?= htmlentities($s->asal_surat) ?></td>
+                                    <td class="text-danger"><?= htmlentities($s->sifat) ?></td>
+                                    <td class="text-danger"><?= htmlentities($s->perihal) ?></td>
+                                <?php else : ?>
+                                    <td><?= $i++; ?></td>
+                                    <td><?= htmlentities($s->tanggal_dikirim) ?></td>
+                                    <td><?= htmlentities($s->diteruskan_oleh) ?></td>
+                                    <td><?= htmlentities($s->asal_surat) ?></td>
+                                    <td><?= htmlentities($s->sifat) ?></td>
+                                    <td><?= htmlentities($s->perihal) ?></td>
+                                <?php endif; ?>
                                 <td>
                                     <center>
                                         <form method="POST" action="<?= base_url('bidang4/detail'); ?>">
