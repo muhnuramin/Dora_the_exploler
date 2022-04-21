@@ -1,6 +1,5 @@
 <div class="container-fluid">
     <?php foreach ($surat_masuk as $s) : ?>
-        <a href="<?= base_url('bidang2/print/'); ?><?= $s->id_disposisi ?>" target="_BLANK" type="button" class="btn btn-success"><i class="fas fa-print"></i> Print Lembar Disposisi</a><br><br>
         <div class="card shadow mb-4">
             <!-- Card Header - Accordion -->
             <a href="#previewSurat1" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="previewSurat">
