@@ -16,6 +16,8 @@
                             <th>Tanggal Disposisi</th>
                             <th>Diteruskan Kepada</th>
                             <th>Tanggal Dibaca</th>
+                            <th>Catatan</th>
+                            <th>Catatan Bidang</th>
                             <th>TTD</th>
                             <th>Detail</th>
                             <th>Print</th>
@@ -36,6 +38,17 @@
                                 <?php else : ?>
                                     <td class="text-success"><?= htmlentities($sd->tanggal_dibaca) ?></td>
                                 <?php endif; ?>
+                                <?php if (file_exists('./' . $sd->catatan)) { ?>
+                                    <td><img src="<?= base_url() ?><?= $sd->catatan ?>" width="300px" height="150px"></td>
+                                <?php } else { ?>
+                                    <td><?= $sd->catatan ?></td>
+                                <?php } ?>
+
+                                <?php if (file_exists('./' . $sd->catatan_bidang)) { ?>
+                                    <td><img src="<?= base_url() ?><?= $sd->catatan_bidang ?>" width="300" height="150"></td>
+                                <?php } else { ?>
+                                    <td><?= htmlentities($sd->catatan_bidang) ?></td>
+                                <?php } ?>
                                 <td class="align-middle" scope="row"><img src="<?= base_url() ?><?= $sd->tanda_tangan ?>" width="100" height="100"></td>
                                 <td class="align-middle">
                                     <center>
