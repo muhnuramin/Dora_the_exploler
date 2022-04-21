@@ -179,7 +179,9 @@ class Pimpinan extends CI_Controller
             'tanggal_dikirim' => $time,
             'diteruskan_oleh' => $this->input->post('diteruskan_oleh', true),
             'tanggal_dibaca' => '-',
-            'catatan_bidang' => $this->input->post('catatan_bidang', true)
+            'catatan_bidang' => $this->input->post('catatan_bidang', true),
+            'created_at' => date("Y-m-d h:i:s"),
+            'updated_at' => date("Y-m-d h:i:s")
         ];
 
         if (count($arrRole) > 1) {
@@ -221,6 +223,7 @@ class Pimpinan extends CI_Controller
     {
         $data = [
             'didisposisi' => $this->input->post('status_disposisi'),
+            'updated_at' => date("Y-m-d h:i:s")
         ];
 
         $this->db->where('id', $this->input->post('id'));
@@ -240,6 +243,8 @@ class Pimpinan extends CI_Controller
         } else if ($post_catatan != null) {
             $this->db->set('catatan_bidang', $post_catatan);
         }
+        $this->db->set('updated_at', date("Y-m-d h:i:s"));
+
         $this->db->where('id_disposisi', $post_id);
         $this->db->update('disposisi');
 
