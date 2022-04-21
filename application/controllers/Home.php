@@ -50,7 +50,7 @@ class Home extends CI_Controller
 
         $config['upload_path'] = './data';
         $config['allowed_types'] = 'pdf';
-        //$config['encrypt_name'] = true;
+        $config['encrypt_name'] = true;
 
         $this->load->library('upload', $config);
 
