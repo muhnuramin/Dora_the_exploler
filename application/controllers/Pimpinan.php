@@ -235,12 +235,29 @@ class Pimpinan extends CI_Controller
 
     public function perbaruiSuratMasuk()
     {
+        $catatan = '';
+        $folder2 = 'upload/catatan/';
+
+        $catatan = $this->input->post('catatan', true);
+
+        if ($this->input->post('image_catatan') != '-') {
+            $image = $this->input->post('image_catatan');
+            $imageDecode = base64_decode($image);
+
+            $file = $folder2 . uniqid() . '.png';
+            $catatan = $file;
+            file_put_contents($file, $imageDecode);
+        }
+
         $data = [
             'didisposisi' => $this->input->post('status_disposisi'),
+            'catatan_dilimpahkan' => $catatan,
             'updated_at' => date("Y-m-d h:i:s")
         ];
 
-        $this->db->where('id', $this->input->post('id'));
+        if ($this->input->post('catatan'))
+
+            $this->db->where('id', $this->input->post('id'));
         $this->db->update('surat_masuk', $data);
 
         return json_encode('surat masuk berhasil diperbarui');
