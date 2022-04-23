@@ -28,6 +28,16 @@
                             <div><?= htmlentities($surat_masuk['perihal']) ?></div>
                         </td>
                     </tr>
+                    <tr>
+                        <td colspan="2">
+                            <p>Catatan :</p>
+                            <?php if (file_exists('./' . $surat_masuk['catatan'])) { ?>
+                                <div><img src="<?= base_url() ?><?= $surat_masuk['catatan'] ?>"></div>
+                            <?php } else { ?>
+                                <p><?= $surat_masuk['catatan'] ?></p>
+                            <?php } ?>
+                        </td>
+                    </tr>
                 </table>
                 <a href="<?= base_url('./data/'); ?><?= $surat_masuk['surat'] ?>" target="_blank" type="button" class="btn btn-secondary"><i class="fas fa-envelope-open"> </i> Lihat Surat</a>
             </div>

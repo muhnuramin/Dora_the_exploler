@@ -122,8 +122,22 @@ class Pimpinan extends CI_Controller
 
     public function limpahkan()
     {
+        $folderPath = "upload/catatan/";
+        $image_parts = explode(";base64,", $_POST['catatan']);
+        $image_type_aux = explode("image/", $image_parts[0]);
+        $image_type = $image_type_aux[1];
+        $image_base64 = base64_decode($image_parts[1]);
+        $file = $folderPath . uniqid() . '.' . $image_type;
+        file_put_contents($file, $image_base64);
+
+        if ($this->input->post('perihal') == null || $this->input->post('perihal') == "") {
+            $catatan = $file;
+        } else {
+            $catatan = $this->input->post('perihal');
+        }
         $data = [
             'didisposisi' => '?',
+            'catatan' => $catatan,
         ];
         $this->session->set_flashdata('flash', 'dilimpahkan ke sekertaris');
         $this->db->where('id', $this->input->post('id'));
