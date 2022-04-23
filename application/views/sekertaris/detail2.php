@@ -30,11 +30,11 @@
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <p>Catatan :</p>
-                            <?php if (file_exists('./' . $surat_masuk['catatan'])) { ?>
-                                <div><img src="<?= base_url() ?><?= $surat_masuk['catatan'] ?>"></div>
+                            <p>Catatan Pimpinan:</p>
+                            <?php if (file_exists('./' . $surat_masuk['catatan_dilimpahkan'])) { ?>
+                                <div><img src="<?= base_url() ?><?= $surat_masuk['catatan_dilimpahkan'] ?>"></div>
                             <?php } else { ?>
-                                <p><?= $surat_masuk['catatan'] ?></p>
+                                <p><?= $surat_masuk['catatan_dilimpahkan'] ?></p>
                             <?php } ?>
                         </td>
                     </tr>

@@ -137,7 +137,7 @@ class Pimpinan extends CI_Controller
         }
         $data = [
             'didisposisi' => '?',
-            'catatan' => $catatan,
+            'catatan_dilimpahkan' => $catatan,
         ];
         $this->session->set_flashdata('flash', 'dilimpahkan ke sekertaris');
         $this->db->where('id', $this->input->post('id'));
