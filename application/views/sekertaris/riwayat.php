@@ -51,19 +51,11 @@
                                     <a href="<?= base_url('sekertaris/print/'); ?><?= $rs->id_disposisi ?>" target="_BLANK" type="button" class="btn btn-success"><i class="fas fa-print"></i> Print Lembar Disposisi</a><br><br>
                                 </td>
                                 <td class="align-middle">
-                                    <?php if ($rs->diteruskan_oleh == "Sekretaris") {  ?>
-                                        <center>
-                                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
-                                                <i class="fas fa-paper-plane"></i>
-                                            </button>
-                                        </center>
-                                    <?php } else { ?>
-                                        <center>
-                                            <button type="button" class="btn btn-primary btn-sm d-none" data-toggle="modal" data-target="#exampleModal">
-                                                <i class="fas fa-paper-plane"></i>
-                                            </button>
-                                        </center>
-                                    <?php } ?>
+                                    <center>
+                                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
+                                            <i class="fas fa-paper-plane"></i>
+                                        </button>
+                                    </center>
                                 </td>
                             </tr>
                             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

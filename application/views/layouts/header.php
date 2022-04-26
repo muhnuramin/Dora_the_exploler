@@ -109,6 +109,11 @@
                         <span>Surat Masuk</span></a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href=<?= base_url("sekertaris/suratlain") ?>>
+                        <i class="fas fa-envelope"></i>
+                        <span>Surat Masuk Lain</span></a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href=<?= base_url("sekertaris/riwayat") ?>>
                         <i class="fas fa-mail-bulk"></i>
                         <span>Riwayat Disposisi</span></a>

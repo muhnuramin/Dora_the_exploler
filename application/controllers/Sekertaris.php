@@ -14,6 +14,7 @@ class Sekertaris extends CI_Controller
 
     public function index()
     {
+        is_logged_in();
         $data = [
             'title' => 'Sekretaris | Surat Masuk',
             'name' => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
@@ -22,6 +23,30 @@ class Sekertaris extends CI_Controller
         ];
         $this->load->view('layouts/header', $data);
         $this->load->view('sekertaris/index', $data);
+        $this->load->view('layouts/footer');
+    }
+    public function suratlain()
+    {
+        is_logged_in();
+        $data = [
+            'title' => 'Sekretaris | Surat Masuk Lain',
+            'surat_masuk' => $this->Surat_masuk_model->bacaSurat(),
+            'name' => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
+        ];
+        $this->load->view('layouts/header', $data);
+        $this->load->view('sekertaris/suratlain', $data);
+        $this->load->view('layouts/footer');
+    }
+    public function detaillain($id)
+    {
+        is_logged_in();
+        $data = [
+            'title' => 'Sekretaris | Disposisi Surat Lain',
+            'surat_masuk' => $this->Surat_masuk_model->getSuratById($id),
+            'name' => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
+        ];
+        $this->load->view('layouts/header', $data);
+        $this->load->view('sekertaris/detail2');
         $this->load->view('layouts/footer');
     }
     public function detail()
@@ -54,6 +79,7 @@ class Sekertaris extends CI_Controller
         $this->load->view('sekertaris/detail2');
         $this->load->view('layouts/footer');
     }
+
     public function disposisiulang($id)
     {
         $data = [
