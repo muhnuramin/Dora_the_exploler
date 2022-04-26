@@ -67,7 +67,8 @@ class Home extends CI_Controller
                 "sifat" => $this->input->post('sifat', true),
                 "perihal" => $this->input->post('perihal', true),
                 "surat" => $surat,
-                "didisposisi" => 'N'
+                "didisposisi" => 'N',
+                'catatan_dilimpahkan' => '-'
             ];
             $this->session->set_flashdata('flash', 'ditambahkan');
         }
