@@ -92,7 +92,7 @@
                             </div>
                             <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                                 <div class="card-body">
-                                    <textarea class="form-control" name="catatan_bidang" id="catatan_bidang" cols="30" rows="8" placeholder="Catatan Bidang" id="catatan_bidang"></textarea>
+                                    <textarea class="form-control" name="catatan_bidang" id="catatan_bidang" cols="30" rows="8" placeholder="Catatan Bidang" id="catatan_bidang" minlength="2"></textarea>
                                 </div>
                             </div>
                         </div>

@@ -124,7 +124,7 @@
                             </div>
                             <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                                 <div class="card-body">
-                                    <textarea class="form-control" name="perihal" id="perihal" cols="30" rows="8" placeholder="catatan" id="perihal"></textarea>
+                                    <textarea class="form-control" name="perihal" id="perihal" cols="30" rows="8" placeholder="catatan" id="perihal" minlength="2"></textarea>
                                 </div>
                             </div>
                         </div>
