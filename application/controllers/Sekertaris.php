@@ -7,6 +7,7 @@ class Sekertaris extends CI_Controller
     {
         parent::__construct();
         $this->load->library('session');
+        $this->load->model('User_model');
         $this->load->model('Relasi_model');
         $this->load->model('Surat_masuk_model');
         is_logged_in();
@@ -100,6 +101,8 @@ class Sekertaris extends CI_Controller
     }
     public function tambahData()
     {
+        $this->load->helper('push_notification');
+
         $date = date('Y-m-d-h-i-s');
         $folderPath2 = "upload/";
         $image_parts2 = explode(";base64,", $_POST['signed']);
@@ -137,6 +140,29 @@ class Sekertaris extends CI_Controller
                 'diteruskan_oleh' => 'Sekretaris',
             ];
             $this->db->insert('disposisi', $data);
+
+            // kirim notifikasi
+            $disposisi_id = $this->db->insert_id();
+            $surat_id = $data['id_surat_masuk'];
+
+            $surat = $this->db->where(['id' => $surat_id])->get('surat_masuk')->row_array();
+            $users = $this->User_model->getAllUser();
+            $roles = $this->db->get('roles')->result_array();
+
+            // dapatkan semua data user
+            foreach ($users as $user) {
+                foreach ($roles as $role) {
+                    if ($role['nama_role'] == $object) {
+                        if ($user['role_id'] == $role['role_id']) {
+                            sendPush($user['fcm_token'], "Surat Diterima Dari {$data['diteruskan_oleh']}", 'Dari: ' . $surat['asal_surat'], '@mipmap/ic_launcher', $surat['perihal'], 'disposisi', $disposisi_id);
+                            sleep(1);
+                        }
+                    }
+                }
+            }
+
+            // end
+
             $data2 = [
                 'didisposisi' => 'Y',
             ];

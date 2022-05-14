@@ -7,13 +7,14 @@ class Bidang2 extends CI_Controller
     {
         parent::__construct();
         $this->load->library('session');
+        $this->load->model('User_model');
         $this->load->model('Relasi_model');
         $this->load->model('Surat_masuk_model');
-        is_logged_in();
     }
 
     public function index()
     {
+        is_logged_in();
         $data = [
             'title' => 'Bid. Infrastruktur dan Kewilayahan | Surat Masuk',
             'name' => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
@@ -25,6 +26,7 @@ class Bidang2 extends CI_Controller
     }
     public function detail()
     {
+        is_logged_in();
         $id_disposisi = $this->input->post('id_disposisi');
         $date = date('Y-m-d-h-i-s');
         $data = [
@@ -44,6 +46,7 @@ class Bidang2 extends CI_Controller
 
     public function print($id)
     {
+        is_logged_in();
         $data = [
             'surat_masuk' => $this->Relasi_model->SuratMasukB1byId($id),
             'name' => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
@@ -53,6 +56,7 @@ class Bidang2 extends CI_Controller
     }
     public function editbaca()
     {
+        is_logged_in();
         $id = $this->input->post('id');
         $date = date('Y-m-d-h-i-s');
         $data2 = [
@@ -73,6 +77,8 @@ class Bidang2 extends CI_Controller
     }
     public function catatan()
     {
+        $this->load->helper('push_notification');
+
         $folderPath = "upload/catatan/";
         $image_parts = explode(";base64,", $_POST['catatan']);
         $image_type_aux = explode("image/", $image_parts[0]);
@@ -92,6 +98,26 @@ class Bidang2 extends CI_Controller
         $this->session->set_flashdata('flash', 'diinput');
         $this->db->where('id_disposisi', $this->input->post('id'));
         $this->db->update('disposisi', $data);
+
+        // kirim notifikasi
+        $id = $this->input->post('id');
+        $disposisi = $this->db->where(['id_disposisi' => $id])->get('disposisi')->row_array();
+        $surat = $this->db->where(['id' => $disposisi['id_surat_masuk']])->get('surat_masuk')->row_array();
+
+        $users = $this->User_model->getAllUser();
+        $roles = $this->db->get('roles')->result_array();
+
+        // dapatkan semua data user
+        foreach ($users as $user) {
+            foreach ($roles as $role) {
+                if ($role['nama_role'] == $disposisi['diteruskan_oleh']) {
+                    if ($user['role_id'] == $role['role_id']) {
+                        sendPush($user['fcm_token'], "Balasan Dari {$disposisi['diteruskan_kepada']}", "Surat: {$surat['asal_surat']}, Catatan: {$disposisi['catatan_bidang']}", '@mipmap/ic_launcher', $disposisi['id_disposisi'], 'disposisi', $id);
+                    }
+                }
+            }
+        }
+
         redirect(base_url('/bidang2/index'));
     }
 }

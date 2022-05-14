@@ -7,6 +7,7 @@ class Pimpinan extends CI_Controller
     {
         parent::__construct();
         $this->load->library('session');
+        $this->load->model('User_model');
         $this->load->model('Surat_masuk_model');
         $this->load->model('Relasi_model');
         // is_logged_in();
@@ -97,6 +98,28 @@ class Pimpinan extends CI_Controller
             ];
             $this->db->insert('disposisi', $data);
 
+            // kirim notifikasi
+            $disposisi_id = $this->db->insert_id();
+            $surat_id = $data['id_surat_masuk'];
+
+            $surat = $this->db->where(['id' => $surat_id])->get('surat_masuk')->row_array();
+            $users = $this->User_model->getAllUser();
+            $roles = $this->db->get('roles')->result_array();
+
+            // dapatkan semua data user
+            foreach ($users as $user) {
+                foreach ($roles as $role) {
+                    if ($role['nama_role'] == $object) {
+                        if ($user['role_id'] == $role['role_id']) {
+                            sendPush($user['fcm_token'], "Surat Diterima Dari {$data['diteruskan_oleh']}", 'Dari: ' . $surat['asal_surat'], '@mipmap/ic_launcher', $surat['perihal'], 'disposisi', $disposisi_id);
+                            sleep(1);
+                        }
+                    }
+                }
+            }
+
+            // end
+
             $data2 = [
                 'didisposisi' => 'Y',
             ];
@@ -122,6 +145,8 @@ class Pimpinan extends CI_Controller
 
     public function limpahkan()
     {
+        $this->load->helper('push_notification');
+
         $folderPath = "upload/catatan/";
         $image_parts = explode(";base64,", $_POST['catatan']);
         $image_type_aux = explode("image/", $image_parts[0]);
@@ -142,10 +167,33 @@ class Pimpinan extends CI_Controller
         $this->session->set_flashdata('flash', 'dilimpahkan ke sekertaris');
         $this->db->where('id', $this->input->post('id'));
         $this->db->update('surat_masuk', $data);
+
+        // kirim notif
+
+        $last_id = $this->input->post('id');
+
+        $surat = $this->db->where(['id' => $last_id])->get('surat_masuk')->row_array();
+        $users = $this->User_model->getAllUser();
+        $roles = $this->db->get('roles')->result_array();
+
+        // dapatkan semua data user
+        foreach ($users as $user) {
+            foreach ($roles as $role) {
+                if ($role['nama_role'] == "Sekretaris") {
+                    if ($user['role_id'] == $role['role_id']) {
+                        sendPush($user['fcm_token'], 'Surat Diterima Dari Pimpinan', 'Dari: ' . $surat['asal_surat'], '@mipmap/ic_launcher', $surat['perihal'], 'surat_masuk', $last_id);
+                        break;
+                    }
+                }
+            }
+        }
+
+
         redirect('pimpinan/index');
     }
 
-    // App
+    // Mobile app
+
     public function tambahDataFromApp()
     {
         $this->load->helper('push_notification');
