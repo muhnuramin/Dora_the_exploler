@@ -74,6 +74,8 @@ class Home extends CI_Controller
         }
         $this->db->insert('surat_masuk', $data);
 
+        // kirim notif
+
         $last_id = $this->db->insert_id();
 
         $users = $this->User_model->getAllUser();
@@ -85,6 +87,7 @@ class Home extends CI_Controller
                 if ($role['nama_role'] == "Pimpinan") {
                     if ($user['role_id'] == $role['role_id']) {
                         sendPush($user['fcm_token'], 'Surat baru diterima', 'Dari: ' . $data['asal_surat'], '@mipmap/ic_launcher', $data['perihal'], 'surat_masuk', $last_id);
+                        break;
                     }
                 }
             }
