@@ -69,16 +69,16 @@ class Pimpinan extends CI_Controller
         $file2 = $folderPath2 . uniqid() . '.' . $image_type;
         file_put_contents($file2, $image_base642);
 
-        $folderPath = "upload/catatan/";
-        $image_parts = explode(";base64,", $_POST['catatan']);
-        $image_type_aux = explode("image/", $image_parts[0]);
-        $image_type = $image_type_aux[1];
-        $image_base64 = base64_decode($image_parts[1]);
-        $file = $folderPath . uniqid() . '.' . $image_type;
-        file_put_contents($file, $image_base64);
 
         $check = $this->input->post('diteruskan');
         if ($this->input->post('perihal') == null || $this->input->post('perihal') == "") {
+            $folderPath = "upload/catatan/";
+            $image_parts = explode(";base64,", $_POST['catatan']);
+            $image_type_aux = explode("image/", $image_parts[0]);
+            $image_type = $image_type_aux[1];
+            $image_base64 = base64_decode($image_parts[1]);
+            $file = $folderPath . uniqid() . '.' . $image_type;
+            file_put_contents($file, $image_base64);
             $catatan = $file;
         } else {
             $catatan = $this->input->post('perihal');
@@ -147,15 +147,14 @@ class Pimpinan extends CI_Controller
     {
         $this->load->helper('push_notification');
 
-        $folderPath = "upload/catatan/";
-        $image_parts = explode(";base64,", $_POST['catatan']);
-        $image_type_aux = explode("image/", $image_parts[0]);
-        $image_type = $image_type_aux[1];
-        $image_base64 = base64_decode($image_parts[1]);
-        $file = $folderPath . uniqid() . '.' . $image_type;
-        file_put_contents($file, $image_base64);
-
         if ($this->input->post('perihal') == null || $this->input->post('perihal') == "") {
+            $folderPath = "upload/catatan/";
+            $image_parts = explode(";base64,", $_POST['catatan']);
+            $image_type_aux = explode("image/", $image_parts[0]);
+            $image_type = $image_type_aux[1];
+            $image_base64 = base64_decode($image_parts[1]);
+            $file = $folderPath . uniqid() . '.' . $image_type;
+            file_put_contents($file, $image_base64);
             $catatan = $file;
         } else {
             $catatan = $this->input->post('perihal');
