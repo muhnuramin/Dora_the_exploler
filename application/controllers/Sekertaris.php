@@ -170,7 +170,7 @@ class Sekertaris extends CI_Controller
             $this->db->update('surat_masuk', $data2);
             $this->session->set_flashdata('flash', 'diteruskan');
         }
-        redirect(base_url('sekertaris/riwayat'));
+        redirect('sekertaris/riwayat');
     }
     public function riwayat()
     {
