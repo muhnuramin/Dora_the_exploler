@@ -173,4 +173,13 @@ class Auth extends CI_Controller
             echo json_encode($data);
         }
     }
+
+    public function logoutFromApp()
+    {
+        $this->db->set('fcm_token', NULL);
+        $this->db->where('user_id', $this->input->post('id'));
+        $this->db->update('user');
+
+        echo json_encode("berhasil logout " . $this->input->post('id'));
+    }
 }
