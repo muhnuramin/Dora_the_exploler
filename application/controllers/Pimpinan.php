@@ -196,7 +196,7 @@ class Pimpinan extends CI_Controller
     public function tambahDataFromApp()
     {
         $this->load->helper('push_notification');
-        $users = $this->db->get('user')->result_array();
+        // $users = $this->db->get('user')->result_array();
         $roles = $this->db->get('roles')->result_array();
 
         $nameTTD = '-';
@@ -251,6 +251,28 @@ class Pimpinan extends CI_Controller
                     if ($roles[$j]['role_id'] == $arrRole[$i]) {
                         $data['diteruskan_kepada'] = $roles[$j]['nama_role'];
                         $this->db->insert('disposisi', $data);
+
+                        // kirim notifikasi
+                        $disposisi_id = $this->db->insert_id();
+                        $surat_id = $data['id_surat_masuk'];
+
+                        $surat = $this->db->where(['id' => $surat_id])->get('surat_masuk')->row_array();
+                        $users = $this->User_model->getAllUser();
+                        $rolesCheck = $this->db->get('roles')->result_array();
+
+                        // dapatkan semua data user
+                        foreach ($users as $user) {
+                            foreach ($rolesCheck as $role) {
+                                if ($role['nama_role'] == $roles[$j]['nama_role']) {
+                                    if ($user['role_id'] == $role['role_id']) {
+                                        sendPush($user['fcm_token'], "Surat Diterima Dari {$data['diteruskan_oleh']}", 'Dari: ' . $surat['asal_surat'], '@mipmap/ic_launcher', $surat['perihal'], 'disposisi', $disposisi_id);
+                                        sleep(1);
+                                    }
+                                }
+                            }
+                        }
+
+                        // end
                     }
                 }
             }
@@ -259,17 +281,29 @@ class Pimpinan extends CI_Controller
                 if ($roles[$i]['role_id'] == $arrRole[0]) {
                     $data['diteruskan_kepada'] = $roles[$i]['nama_role'];
                     $this->db->insert('disposisi', $data);
+
+                    // kirim notifikasi
+                    $disposisi_id = $this->db->insert_id();
+                    $surat_id = $data['id_surat_masuk'];
+
+                    $surat = $this->db->where(['id' => $surat_id])->get('surat_masuk')->row_array();
+                    $users = $this->User_model->getAllUser();
+                    $rolesCheck = $this->db->get('roles')->result_array();
+
+                    // dapatkan semua data user
+                    foreach ($users as $user) {
+                        foreach ($rolesCheck as $role) {
+                            if ($role['nama_role'] == $roles[$i]['nama_role']) {
+                                if ($user['role_id'] == $role['role_id']) {
+                                    sendPush($user['fcm_token'], "Surat Diterima Dari {$data['diteruskan_oleh']}", 'Dari: ' . $surat['asal_surat'], '@mipmap/ic_launcher', $surat['perihal'], 'disposisi', $disposisi_id);
+                                    sleep(1);
+                                }
+                            }
+                        }
+                    }
+
+                    // end
                     break;
-                }
-            }
-        }
-
-        $surat = $this->db->get_where('surat_masuk', ['id' => $data['id_surat_masuk']])->row_array();
-
-        foreach ($users as $user) {
-            for ($i = 0; $i < count($arrRole); $i++) {
-                if ($user['role_id'] == $arrRole[$i]) {
-                    sendPush($user['fcm_token'], 'Surat baru diterima', 'Dari: ' . $surat['asal_surat'], '@mipmap/ic_launcher', 'Diterima dari Pimpinan', 'disposisi', $this->db->insert_id());
                 }
             }
         }
@@ -307,6 +341,26 @@ class Pimpinan extends CI_Controller
             $this->db->where('id', $this->input->post('id'));
         $this->db->update('surat_masuk', $data);
 
+        // kirim notif
+
+        $last_id = $this->input->post('id');
+
+        $surat = $this->db->where(['id' => $last_id])->get('surat_masuk')->row_array();
+        $users = $this->User_model->getAllUser();
+        $roles = $this->db->get('roles')->result_array();
+
+        // dapatkan semua data user
+        foreach ($users as $user) {
+            foreach ($roles as $role) {
+                if ($role['nama_role'] == "Sekretaris") {
+                    if ($user['role_id'] == $role['role_id']) {
+                        sendPush($user['fcm_token'], 'Surat Diterima Dari Pimpinan', 'Dari: ' . $surat['asal_surat'], '@mipmap/ic_launcher', $surat['perihal'], 'surat_masuk', $last_id);
+                        break;
+                    }
+                }
+            }
+        }
+
         return json_encode('surat masuk berhasil diperbarui');
     }
 
@@ -325,6 +379,27 @@ class Pimpinan extends CI_Controller
 
         $this->db->where('id_disposisi', $post_id);
         $this->db->update('disposisi');
+
+        // kirim notifikasi
+
+        $disposisi = $this->db->where(['id_disposisi' => $post_id])->get('disposisi')->row_array();
+        $surat = $this->db->where(['id' => $disposisi['id_surat_masuk']])->get('surat_masuk')->row_array();
+
+        $users = $this->User_model->getAllUser();
+        $roles = $this->db->get('roles')->result_array();
+
+        // dapatkan semua data user
+        foreach ($users as $user) {
+            foreach ($roles as $role) {
+                if ($role['nama_role'] == $disposisi['diteruskan_oleh']) {
+                    if ($user['role_id'] == $role['role_id']) {
+                        sendPush($user['fcm_token'], "Balasan Dari {$disposisi['diteruskan_kepada']}", "Surat: {$surat['asal_surat']}, Catatan: {$disposisi['catatan_bidang']}", '@mipmap/ic_launcher', $disposisi['id_disposisi'], 'disposisi', $post_id);
+                    }
+                }
+            }
+        }
+
+        // end
 
         echo json_encode('berhasil');
     }
