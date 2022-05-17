@@ -96,6 +96,7 @@ class Auth extends CI_Controller
             'name' => $this->input->post('name', true),
             'username' => $this->input->post('username', true),
             'role_id' => $this->input->post('roles', true),
+            'has_app' => 0,
             'password' => password_hash($this->input->post('password1', true), PASSWORD_DEFAULT)
         ];
         $this->session->set_flashdata('flash', 'ditambahkan');
@@ -176,6 +177,7 @@ class Auth extends CI_Controller
 
     public function logoutFromApp()
     {
+        $this->db->set('has_app', 0);
         $this->db->set('fcm_token', NULL);
         $this->db->where('user_id', $this->input->post('id'));
         $this->db->update('user');
