@@ -366,6 +366,8 @@ class Pimpinan extends CI_Controller
 
     public function perbaruiDisposisi()
     {
+        $this->load->helper('push_notification');
+
         $post_id = $this->input->post('id_disposisi');
         $post_catatan = $this->input->post('catatan_bidang');
         $post_readat = $this->input->post('read_at');
@@ -389,15 +391,28 @@ class Pimpinan extends CI_Controller
         $roles = $this->db->get('roles')->result_array();
 
         // dapatkan semua data user
-        foreach ($users as $user) {
-            foreach ($roles as $role) {
-                if ($role['nama_role'] == $disposisi['diteruskan_oleh']) {
-                    if ($user['role_id'] == $role['role_id']) {
-                        sendPush($user['fcm_token'], "Balasan Dari {$disposisi['diteruskan_kepada']}", "Surat: {$surat['asal_surat']}, Catatan: {$disposisi['catatan_bidang']}", '@mipmap/ic_launcher', $disposisi['id_disposisi'], 'disposisi', $post_id);
+        if ($post_catatan != null) {
+            foreach ($users as $user) {
+                foreach ($roles as $role) {
+                    if ($role['nama_role'] == $disposisi['diteruskan_oleh']) {
+                        if ($user['role_id'] == $role['role_id']) {
+                            sendPush($user['fcm_token'], "Balasan Dari {$disposisi['diteruskan_kepada']}", "Surat: {$surat['asal_surat']}, Catatan: {$disposisi['catatan_bidang']}", '@mipmap/ic_launcher', $disposisi['id_disposisi'], 'disposisi', $post_id);
+                        }
+                    }
+                }
+            }
+        } else if ($post_readat != null) {
+            foreach ($users as $user) {
+                foreach ($roles as $role) {
+                    if ($role['nama_role'] == $disposisi['diteruskan_oleh']) {
+                        if ($user['role_id'] == $role['role_id']) {
+                            sendPush($user['fcm_token'], "Surat anda telah dibaca {$disposisi['diteruskan_kepada']}", "Surat: {$surat['asal_surat']}", '@mipmap/ic_launcher', $disposisi['id_disposisi'], 'disposisi', $post_id);
+                        }
                     }
                 }
             }
         }
+
 
         // end
 
@@ -408,6 +423,14 @@ class Pimpinan extends CI_Controller
     {
         $user = $this->input->post('user');
         $id_surat = $this->input->post('id');
+
+        $disposisi = $this->db->where(['id_surat_masuk' => $id_surat])->get('disposisi')->row_array();
+
+        unlink(base_url($disposisi['tanda_tangan']));
+
+        if (substr($disposisi['catatan'], 0, 6) == "upload") {
+            unlink(base_url($disposisi['catatan']));
+        }
 
         $this->db->delete('disposisi', ['id_surat_masuk' => $id_surat, 'diteruskan_oleh' => $user]);
     }
