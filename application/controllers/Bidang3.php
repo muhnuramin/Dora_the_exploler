@@ -29,6 +29,30 @@ class Bidang3 extends CI_Controller
         is_logged_in();
         $id_disposisi = $this->input->post('id_disposisi');
         $date = date('Y-m-d-h-i-s');
+
+        // kirim notifikasi
+        $disposisi = $this->db->where(['id_disposisi' => $id_disposisi])->get('disposisi')->row_array();
+        $surat = $this->db->where(['id' => $disposisi['id_surat_masuk']])->get('surat_masuk')->row_array();
+
+        $users = $this->User_model->getAllUser();
+        $roles = $this->db->get('roles')->result_array();
+
+        if ($disposisi['tanggal_dibaca'] == "0000-00-00") {
+            foreach ($users as $user) {
+                foreach ($roles as $role) {
+                    if ($role['nama_role'] == $disposisi['diteruskan_oleh']) {
+                        if ($user['role_id'] == $role['role_id']) {
+                            if ($user['fcm_token'] != null) {
+                                sendPush($user['fcm_token'], "Surat anda telah dibaca {$disposisi['diteruskan_kepada']}", "Surat: {$surat['asal_surat']}", '@mipmap/ic_launcher', $disposisi['id_disposisi'], 'disposisi', $id_disposisi);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // end kirim notifikasi
+
         $data = [
             'title' => 'Detail Surat Masuk',
             'surat_masuk' => $this->Relasi_model->SuratMasukB2byId($id_disposisi),
@@ -39,27 +63,6 @@ class Bidang3 extends CI_Controller
         ];
         $this->db->where('id_disposisi', $this->input->post('id_disposisi'));
         $this->db->update('disposisi', $data2);
-
-        // kirim notifikasi
-        $disposisi = $this->db->where(['id_disposisi' => $id_disposisi])->get('disposisi')->row_array();
-        $surat = $this->db->where(['id' => $disposisi['id_surat_masuk']])->get('surat_masuk')->row_array();
-
-        $users = $this->User_model->getAllUser();
-        $roles = $this->db->get('roles')->result_array();
-
-        foreach ($users as $user) {
-            foreach ($roles as $role) {
-                if ($role['nama_role'] == $disposisi['diteruskan_oleh']) {
-                    if ($user['role_id'] == $role['role_id']) {
-                        if ($user['fcm_token'] != null) {
-                            sendPush($user['fcm_token'], "Surat anda telah dibaca {$disposisi['diteruskan_kepada']}", "Surat: {$surat['asal_surat']}", '@mipmap/ic_launcher', $disposisi['id_disposisi'], 'disposisi', $id_disposisi);
-                        }
-                    }
-                }
-            }
-        }
-
-        // end kirim notifikasi
 
         $this->load->view('layouts/header', $data);
         $this->load->view('bidang/detail/detail3', $data);
