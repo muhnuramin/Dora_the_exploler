@@ -86,8 +86,10 @@ class Home extends CI_Controller
             foreach ($roles as $role) {
                 if ($role['nama_role'] == "Pimpinan") {
                     if ($user['role_id'] == $role['role_id']) {
-                        sendPush($user['fcm_token'], 'Surat baru diterima', 'Dari: ' . $data['asal_surat'], '@mipmap/ic_launcher', $data['perihal'], 'surat_masuk', $last_id);
-                        break;
+                        if ($user['fcm_token'] != null) {
+                            sendPush($user['fcm_token'], 'Surat baru diterima', 'Dari: ' . $data['asal_surat'], '@mipmap/ic_launcher', $data['perihal'], 'surat_masuk', $last_id);
+                            break;
+                        }
                     }
                 }
             }

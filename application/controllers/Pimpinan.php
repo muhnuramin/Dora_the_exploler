@@ -111,8 +111,10 @@ class Pimpinan extends CI_Controller
                 foreach ($roles as $role) {
                     if ($role['nama_role'] == $object) {
                         if ($user['role_id'] == $role['role_id']) {
-                            sendPush($user['fcm_token'], "Surat Diterima Dari {$data['diteruskan_oleh']}", 'Dari: ' . $surat['asal_surat'], '@mipmap/ic_launcher', $surat['perihal'], 'disposisi', $disposisi_id);
-                            sleep(1);
+                            if ($user['fcm_token'] != null) {
+                                sendPush($user['fcm_token'], "Surat Diterima Dari {$data['diteruskan_oleh']}", 'Dari: ' . $surat['asal_surat'], '@mipmap/ic_launcher', $surat['perihal'], 'disposisi', $disposisi_id);
+                                sleep(1);
+                            }
                         }
                     }
                 }
@@ -180,8 +182,10 @@ class Pimpinan extends CI_Controller
             foreach ($roles as $role) {
                 if ($role['nama_role'] == "Sekretaris") {
                     if ($user['role_id'] == $role['role_id']) {
-                        sendPush($user['fcm_token'], 'Surat Diterima Dari Pimpinan', 'Dari: ' . $surat['asal_surat'], '@mipmap/ic_launcher', $surat['perihal'], 'surat_masuk', $last_id);
-                        break;
+                        if ($user['fcm_token'] != null) {
+                            sendPush($user['fcm_token'], 'Surat Diterima Dari Pimpinan', 'Dari: ' . $surat['asal_surat'], '@mipmap/ic_launcher', $surat['perihal'], 'surat_masuk', $last_id);
+                            break;
+                        }
                     }
                 }
             }
@@ -245,6 +249,9 @@ class Pimpinan extends CI_Controller
             'updated_at' => date("Y-m-d h:i:s")
         ];
 
+        $this->db->where('id', $this->input->post('id_surat_masuk', true));
+        $this->db->update('surat_masuk', ['didisposisi' => 'Y']);
+
         if (count($arrRole) > 1) {
             for ($i = 0; $i < count($arrRole); $i++) {
                 for ($j = 0; $j < count($roles); $j++) {
@@ -265,8 +272,10 @@ class Pimpinan extends CI_Controller
                             foreach ($rolesCheck as $role) {
                                 if ($role['nama_role'] == $roles[$j]['nama_role']) {
                                     if ($user['role_id'] == $role['role_id']) {
-                                        sendPush($user['fcm_token'], "Surat Diterima Dari {$data['diteruskan_oleh']}", 'Dari: ' . $surat['asal_surat'], '@mipmap/ic_launcher', $surat['perihal'], 'disposisi', $disposisi_id);
-                                        sleep(1);
+                                        if ($user['fcm_token'] != null) {
+                                            sendPush($user['fcm_token'], "Surat Diterima Dari {$data['diteruskan_oleh']}", 'Dari: ' . $surat['asal_surat'], '@mipmap/ic_launcher', $surat['perihal'], 'disposisi', $disposisi_id);
+                                            sleep(1);
+                                        }
                                     }
                                 }
                             }
@@ -295,8 +304,10 @@ class Pimpinan extends CI_Controller
                         foreach ($rolesCheck as $role) {
                             if ($role['nama_role'] == $roles[$i]['nama_role']) {
                                 if ($user['role_id'] == $role['role_id']) {
-                                    sendPush($user['fcm_token'], "Surat Diterima Dari {$data['diteruskan_oleh']}", 'Dari: ' . $surat['asal_surat'], '@mipmap/ic_launcher', $surat['perihal'], 'disposisi', $disposisi_id);
-                                    sleep(1);
+                                    if ($user['fcm_token'] != null) {
+                                        sendPush($user['fcm_token'], "Surat Diterima Dari {$data['diteruskan_oleh']}", 'Dari: ' . $surat['asal_surat'], '@mipmap/ic_launcher', $surat['perihal'], 'disposisi', $disposisi_id);
+                                        sleep(1);
+                                    }
                                 }
                             }
                         }
@@ -307,9 +318,6 @@ class Pimpinan extends CI_Controller
                 }
             }
         }
-
-        $this->db->where('id', $this->input->post('id_surat_masuk', true));
-        $this->db->update('surat_masuk', ['didisposisi' => 'Y']);
 
         echo 'berhasil';
     }
@@ -354,8 +362,10 @@ class Pimpinan extends CI_Controller
             foreach ($roles as $role) {
                 if ($role['nama_role'] == "Sekretaris") {
                     if ($user['role_id'] == $role['role_id']) {
-                        sendPush($user['fcm_token'], 'Surat Diterima Dari Pimpinan', 'Dari: ' . $surat['asal_surat'], '@mipmap/ic_launcher', $surat['perihal'], 'surat_masuk', $last_id);
-                        break;
+                        if ($user['fcm_token'] != null) {
+                            sendPush($user['fcm_token'], 'Surat Diterima Dari Pimpinan', 'Dari: ' . $surat['asal_surat'], '@mipmap/ic_launcher', $surat['perihal'], 'surat_masuk', $last_id);
+                            break;
+                        }
                     }
                 }
             }
@@ -396,7 +406,9 @@ class Pimpinan extends CI_Controller
                 foreach ($roles as $role) {
                     if ($role['nama_role'] == $disposisi['diteruskan_oleh']) {
                         if ($user['role_id'] == $role['role_id']) {
-                            sendPush($user['fcm_token'], "Balasan Dari {$disposisi['diteruskan_kepada']}", "Surat: {$surat['asal_surat']}, Catatan: {$disposisi['catatan_bidang']}", '@mipmap/ic_launcher', $disposisi['id_disposisi'], 'disposisi', $post_id);
+                            if ($user['fcm_token'] != null) {
+                                sendPush($user['fcm_token'], "Balasan Dari {$disposisi['diteruskan_kepada']}", "Surat: {$surat['asal_surat']}, Catatan: {$disposisi['catatan_bidang']}", '@mipmap/ic_launcher', $disposisi['id_disposisi'], 'disposisi', $post_id);
+                            }
                         }
                     }
                 }
@@ -406,13 +418,14 @@ class Pimpinan extends CI_Controller
                 foreach ($roles as $role) {
                     if ($role['nama_role'] == $disposisi['diteruskan_oleh']) {
                         if ($user['role_id'] == $role['role_id']) {
-                            sendPush($user['fcm_token'], "Surat anda telah dibaca {$disposisi['diteruskan_kepada']}", "Surat: {$surat['asal_surat']}", '@mipmap/ic_launcher', $disposisi['id_disposisi'], 'disposisi', $post_id);
+                            if ($user['fcm_token'] != null) {
+                                sendPush($user['fcm_token'], "Surat anda telah dibaca {$disposisi['diteruskan_kepada']}", "Surat: {$surat['asal_surat']}", '@mipmap/ic_launcher', $disposisi['id_disposisi'], 'disposisi', $post_id);
+                            }
                         }
                     }
                 }
             }
         }
-
 
         // end
 
