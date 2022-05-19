@@ -68,7 +68,7 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            jika anda ingin mendisposisikan ulang surat, maka disposisi sebelumnya akan terhapus
+                                            jika anda ingin mendisposisikan ulang surat, maka disposisi sebelumnya akan <b>terhapus</b>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>

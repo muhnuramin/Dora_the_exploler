@@ -8,7 +8,7 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>No. </th>
+                            <th class="text-center">No. </th>
                             <th>Asal Surat</th>
                             <th>Diteruskan Oleh</th>
                             <th>Tanggal Disposisi</th>
@@ -17,8 +17,8 @@
                             <th>Tindak Lanjut</th>
                             <th>Catatan</th>
                             <th>Catatan Bidang</th>
-                            <th>Print</th>
-                            <th>Disposisi Ulang</th>
+                            <th class="text-center">Print</th>
+                            <th class="text-center">Disposisi Ulang</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -50,7 +50,7 @@
                                 <td class="align-middle">
                                     <a href="<?= base_url('pimpinan/print/'); ?><?= $rs->id_disposisi ?>" target="_BLANK" type="button" class="btn btn-success"><i class="fas fa-print"></i> Print Lembar Disposisi</a><br><br>
                                 </td>
-                                <td>
+                                <td class="align-middle">
                                     <center>
                                         <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
                                             <i class="fas fa-paper-plane"></i>
@@ -68,7 +68,7 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            jika anda ingin mendisposisikan ulang surat, maka disposisi sebelumnya akan terhapus
+                                            jika anda ingin mendisposisikan ulang surat, maka disposisi sebelumnya akan <b>terhapus</b>
                                         </div>
                                         <div class="modal-footer">
 

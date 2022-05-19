@@ -40,24 +40,25 @@ class Pimpinan extends CI_Controller
 
     public function disposisiulang($id)
     {
+        is_logged_in();
         $data = [
             'title' => 'Pimpinan | Disposisi Ulang Surat',
             'surat_masuk' => $this->Surat_masuk_model->getSuratById($id),
             'name' => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
         ];
-        $data2 = [
-            'didisposisi' => 'N',
-        ];
-        $this->db->where('id', $id);
-        $this->db->update('surat_masuk', $data2);
+        // $data2 = [
+        //     'didisposisi' => 'N',
+        // ];
+        // $this->db->where('id', $id);
+        // $this->db->update('surat_masuk', $data2);
         $this->load->view('layouts/header', $data);
         $this->load->view('pimpinan/detail');
         $this->load->view('layouts/footer');
-
         $this->db->delete('disposisi', ['id_surat_masuk' => $id]);
     }
     public function tambahData()
     {
+        is_logged_in();
         $this->load->helper('push_notification');
 
         $date = date('Y-m-d-h-i-s');
@@ -147,6 +148,7 @@ class Pimpinan extends CI_Controller
 
     public function limpahkan()
     {
+        is_logged_in();
         $this->load->helper('push_notification');
 
         if ($this->input->post('perihal') == null || $this->input->post('perihal') == "") {

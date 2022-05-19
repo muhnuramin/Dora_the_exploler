@@ -52,6 +52,7 @@ class Sekertaris extends CI_Controller
     }
     public function detail()
     {
+        is_logged_in();
         $id_disposisi = $this->input->post('id_disposisi');
         $date = date('Y-m-d-h-i-s');
         $data = [
@@ -88,16 +89,17 @@ class Sekertaris extends CI_Controller
             'surat_masuk' => $this->Surat_masuk_model->getSuratById($id),
             'name' => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
         ];
-        $data2 = [
-            'didisposisi' => '?',
-        ];
-        $this->db->where('id', $id);
-        $this->db->update('surat_masuk', $data2);
+        // $data2 = [
+        //     'didisposisi' => '?',
+        // ];
+        // $this->db->where('id', $id);
+        // $this->db->update('surat_masuk', $data2);
         $this->load->view('layouts/header', $data);
         $this->load->view('sekertaris/detail2');
         $this->load->view('layouts/footer');
 
-        $this->db->delete('disposisi', ['id_surat_masuk' => $id, 'diteruskan_oleh' => 'Sekretaris']);
+        // $this->db->delete('disposisi', ['id_surat_masuk' => $id, 'diteruskan_oleh' => 'Sekretaris']);
+        $this->db->delete('disposisi', ['id_surat_masuk' => $id]);
     }
     public function tambahData()
     {
