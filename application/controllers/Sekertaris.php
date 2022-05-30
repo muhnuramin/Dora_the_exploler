@@ -157,7 +157,7 @@ class Sekertaris extends CI_Controller
                     if ($role['nama_role'] == $object) {
                         if ($user['role_id'] == $role['role_id']) {
                             if ($user['fcm_token'] != null) {
-                                sendPush($user['fcm_token'], "Surat Diterima Dari {$data['diteruskan_oleh']}", 'Dari: ' . $surat['asal_surat'], '@mipmap/ic_launcher', $surat['perihal'], 'disposisi', $disposisi_id);
+                                sendPush($user['fcm_token'], "Surat Diterima Dari {$data['diteruskan_oleh']}", 'Surat: ' . $surat['asal_surat'], '@mipmap/ic_launcher', $surat['perihal'], 'disposisi', $disposisi_id);
                                 sleep(1);
                             }
                         }
