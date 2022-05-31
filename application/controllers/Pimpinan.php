@@ -113,7 +113,7 @@ class Pimpinan extends CI_Controller
                     if ($role['nama_role'] == $object) {
                         if ($user['role_id'] == $role['role_id']) {
                             if ($user['fcm_token'] != null) {
-                                sendPush($user['fcm_token'], "Surat Diterima Dari {$data['diteruskan_oleh']}", 'Dari: ' . $surat['asal_surat'], '@mipmap/ic_launcher', $surat['perihal'], 'disposisi', $disposisi_id);
+                                sendPush($user['fcm_token'], "Surat Diterima Dari {$data['diteruskan_oleh']}", 'Surat: ' . $surat['asal_surat'], '@mipmap/ic_launcher', $surat['perihal'], 'disposisi', $disposisi_id);
                                 sleep(1);
                             }
                         }
@@ -185,7 +185,8 @@ class Pimpinan extends CI_Controller
                 if ($role['nama_role'] == "Sekretaris") {
                     if ($user['role_id'] == $role['role_id']) {
                         if ($user['fcm_token'] != null) {
-                            sendPush($user['fcm_token'], 'Surat Diterima Dari Pimpinan', 'Dari: ' . $surat['asal_surat'], '@mipmap/ic_launcher', $surat['perihal'], 'surat_masuk', $last_id);
+                            // sendPush($user['fcm_token'], 'Surat Diterima Dari Pimpinan', 'Dari: ' . $surat['asal_surat'], '@mipmap/ic_launcher', $surat['perihal'], 'surat_masuk', $last_id);
+                            sendPush($user['fcm_token'], 'Surat Diterima Dari Pimpinan', 'Surat: ' . $surat['asal_surat'], '@mipmap/ic_launcher', $surat['perihal'], 'surat_masuk', $last_id);
                             break;
                         }
                     }
@@ -275,7 +276,7 @@ class Pimpinan extends CI_Controller
                                 if ($role['nama_role'] == $roles[$j]['nama_role']) {
                                     if ($user['role_id'] == $role['role_id']) {
                                         if ($user['fcm_token'] != null) {
-                                            sendPush($user['fcm_token'], "Surat Diterima Dari {$data['diteruskan_oleh']}", 'Dari: ' . $surat['asal_surat'], '@mipmap/ic_launcher', $surat['perihal'], 'disposisi', $disposisi_id);
+                                            sendPush($user['fcm_token'], "Surat Diterima Dari {$data['diteruskan_oleh']}", 'Surat: ' . $surat['asal_surat'], '@mipmap/ic_launcher', $surat['perihal'], 'disposisi', $disposisi_id);
                                             sleep(1);
                                         }
                                     }
@@ -307,7 +308,7 @@ class Pimpinan extends CI_Controller
                             if ($role['nama_role'] == $roles[$i]['nama_role']) {
                                 if ($user['role_id'] == $role['role_id']) {
                                     if ($user['fcm_token'] != null) {
-                                        sendPush($user['fcm_token'], "Surat Diterima Dari {$data['diteruskan_oleh']}", 'Dari: ' . $surat['asal_surat'], '@mipmap/ic_launcher', $surat['perihal'], 'disposisi', $disposisi_id);
+                                        sendPush($user['fcm_token'], "Surat Diterima Dari {$data['diteruskan_oleh']}", 'Surat: ' . $surat['asal_surat'], '@mipmap/ic_launcher', $surat['perihal'], 'disposisi', $disposisi_id);
                                         sleep(1);
                                     }
                                 }
@@ -365,7 +366,7 @@ class Pimpinan extends CI_Controller
                 if ($role['nama_role'] == "Sekretaris") {
                     if ($user['role_id'] == $role['role_id']) {
                         if ($user['fcm_token'] != null) {
-                            sendPush($user['fcm_token'], 'Surat Diterima Dari Pimpinan', 'Dari: ' . $surat['asal_surat'], '@mipmap/ic_launcher', $surat['perihal'], 'surat_masuk', $last_id);
+                            sendPush($user['fcm_token'], 'Surat Diterima Dari Pimpinan', 'Surat: ' . $surat['asal_surat'], '@mipmap/ic_launcher', $surat['perihal'], 'surat_masuk', $last_id);
                             break;
                         }
                     }
