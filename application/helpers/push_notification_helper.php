@@ -15,7 +15,8 @@ function sendPush($to, $title, $body, $icon, $url, $type, $id)
                 'title' => $title,
                 'body' => $body,
                 'icon' => $icon,
-                'click_action' => $url,
+                // 'click_action' => $url,
+                'click_action' => 'FLUTTER_NOTIFICATION_CLICK',
             ],
             'data' => [
                 'type' => $type,
