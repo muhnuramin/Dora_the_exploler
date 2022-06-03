@@ -16,11 +16,12 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>NO.</th>
+                            <th class="text-align">NO.</th>
                             <th>Surat dari</th>
+                            <th>Nomor Surat</th>
+                            <th>Nomor Agenda</th>
                             <th>Tanggal Surat</th>
                             <th>Tanggal Diterima</th>
-                            <th>Nomor Agenda</th>
                             <th>Sifat</th>
                             <th>Perihal</th>
                             <th>Aksi</th>
@@ -30,11 +31,12 @@
                         <?php $i = 1; ?>
                         <?php foreach ($surat_masuk as $s) : ?>
                             <tr>
-                                <th class="align-middle" scope="row"><?= $i++; ?></th>
+                                <th class="align-middle text-align" scope="row"><?= $i++; ?></th>
                                 <td class="align-middle"><?= htmlentities($s['asal_surat']) ?></td>
+                                <td class="align-middle"><?= htmlentities($s['nomor_surat']) ?></td>
+                                <td class="align-middle"><?= htmlentities($s['nomor_agenda']) ?></td>
                                 <td class="align-middle"><?= htmlentities($s['tanggal_surat']) ?></td>
                                 <td class="align-middle"><?= htmlentities($s['tanggal_diterima']) ?></td>
-                                <td class="align-middle"><?= htmlentities($s['nomor_agenda']) ?></td>
                                 <td class="align-middle"><?= htmlentities($s['sifat']) ?></td>
                                 <td class="align-middle"><?= htmlentities($s['perihal']) ?></td>
                                 <!-- <td class="align-middle"><?= $s['surat']; ?></td> -->

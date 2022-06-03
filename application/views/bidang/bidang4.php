@@ -20,6 +20,8 @@
                             <th>Tanggal Disposisi</th>
                             <th>Didisposisi Oleh</th>
                             <th>Asal Surat</th>
+                            <th>No. Surat</th>
+                            <th>No. Agenda</th>
                             <th>Sifat</th>
                             <th>Perihal</th>
                             <th>Aksi</th>
@@ -34,6 +36,8 @@
                                     <td class="text-danger"><?= htmlentities($s->tanggal_dikirim) ?></td>
                                     <td class="text-danger"><?= htmlentities($s->diteruskan_oleh) ?></td>
                                     <td class="text-danger"><?= htmlentities($s->asal_surat) ?></td>
+                                    <td class="text-danger"><?= htmlentities($s->nomor_surat) ?></td>
+                                    <td class="text-danger"><?= htmlentities($s->nomor_agenda) ?></td>
                                     <td class="text-danger"><?= htmlentities($s->sifat) ?></td>
                                     <td class="text-danger"><?= htmlentities($s->perihal) ?></td>
                                 <?php else : ?>
@@ -41,6 +45,8 @@
                                     <td><?= htmlentities($s->tanggal_dikirim) ?></td>
                                     <td><?= htmlentities($s->diteruskan_oleh) ?></td>
                                     <td><?= htmlentities($s->asal_surat) ?></td>
+                                    <td><?= htmlentities($s->nomor_surat) ?></td>
+                                    <td><?= htmlentities($s->nomor_agenda) ?></td>
                                     <td><?= htmlentities($s->sifat) ?></td>
                                     <td><?= htmlentities($s->perihal) ?></td>
                                 <?php endif; ?>

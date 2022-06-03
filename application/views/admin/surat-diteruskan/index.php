@@ -9,9 +9,10 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>NO.</th>
+                            <th>No.</th>
+                            <th>Surat dari</th>
                             <th>No. Surat</th>
-                            <th>Pengirim</th>
+                            <th>No. Agenda</th>
                             <th>Diteruskan Oleh</th>
                             <th>Tanggal Disposisi</th>
                             <th>Diteruskan Kepada</th>
@@ -27,9 +28,10 @@
                         <?php $i = 1; ?>
                         <?php foreach ($surat_diteruskan as $sd) : ?>
                             <tr>
-                                <td class="align-middle" scope="row"><?= $i++; ?></td>
-                                <td class="align-middle" scope="row"><?= htmlentities($sd->nomor_surat) ?></td>
+                                <td class="align-middle text-align" scope="row"><?= $i++; ?></td>
                                 <td class="align-middle" scope="row"><?= htmlentities($sd->asal_surat) ?></td>
+                                <td class="align-middle" scope="row"><?= htmlentities($sd->nomor_surat) ?></td>
+                                <td class="align-middle" scope="row"><?= htmlentities($sd->nomor_agenda) ?></td>
                                 <td class="align-middle" scope="row"><?= htmlentities($sd->diteruskan_oleh) ?></td>
                                 <td class="align-middle" scope="row"><?= htmlentities($sd->tanggal_dikirim) ?></td>
                                 <td class="align-middle" scope="row"><?= htmlentities($sd->diteruskan_kepada) ?></td>

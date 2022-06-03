@@ -9,7 +9,9 @@
                     <thead>
                         <tr>
                             <th>No. </th>
-                            <th>Asal Surat</th>
+                            <th>Surat dari</th>
+                            <th>No. Surat</th>
+                            <th>No. Agenda</th>
                             <th>Diteruskan Oleh</th>
                             <th>Tanggal Disposisi</th>
                             <th>Diteruskan Kepada</th>
@@ -27,6 +29,8 @@
                             <tr>
                                 <td><?= $i++; ?></td>
                                 <td><?= htmlentities($rs->asal_surat) ?></td>
+                                <td><?= htmlentities($rs->nomor_surat) ?></td>
+                                <td><?= htmlentities($rs->nomor_agenda) ?></td>
                                 <td><?= htmlentities($rs->diteruskan_oleh) ?></td>
                                 <td><?= htmlentities($rs->tanggal_dikirim) ?></td>
                                 <td><?= htmlentities($rs->diteruskan_kepada) ?></td>

@@ -17,9 +17,11 @@
                     <thead>
                         <tr>
                             <th>No. </th>
+                            <th>Surat Dari</th>
+                            <th>No. Surat</th>
+                            <th>No. Agenda</th>
                             <th>Tanggal Disposisi</th>
                             <th>Didisposisi Oleh</th>
-                            <th>Asal Surat</th>
                             <th>Sifat</th>
                             <th>Perihal</th>
                             <th>Aksi</th>
@@ -30,9 +32,11 @@
                         <?php foreach ($surat_masuk as $s) : ?>
                             <tr>
                                 <td><?= $i++; ?></td>
+                                <td><?= htmlentities($s->asal_surat) ?></td>
+                                <td><?= htmlentities($s->nomor_surat) ?></td>
+                                <td><?= htmlentities($s->nomor_agenda) ?></td>
                                 <td><?= htmlentities($s->tanggal_dikirim) ?></td>
                                 <td><?= htmlentities($s->diteruskan_oleh) ?></td>
-                                <td><?= htmlentities($s->asal_surat) ?></td>
                                 <td><?= htmlentities($s->sifat) ?></td>
                                 <td><?= htmlentities($s->perihal) ?></td>
                                 <td>

@@ -18,7 +18,8 @@
                         <tr>
                             <th>No. </th>
                             <th>Tanggal Surat</th>
-                            <th>No.Surat</th>
+                            <th>No. surat</th>
+                            <th>No. Agenda</th>
                             <th>Asal Surat</th>
                             <th>Sifat</th>
                             <th>Disposisi</th>
@@ -30,6 +31,7 @@
                             <tr>
                                 <td><?= $i++; ?></td>
                                 <td><?= htmlentities($s['tanggal_surat']) ?></td>
+                                <td><?= htmlentities($s['nomor_surat']) ?></td>
                                 <td><?= htmlentities($s['nomor_agenda']) ?></td>
                                 <td><?= htmlentities($s['asal_surat']) ?></td>
                                 <td><?= htmlentities($s['sifat']) ?></td>
