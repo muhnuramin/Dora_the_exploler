@@ -61,163 +61,26 @@
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
             <!-- Heading -->
-            <?php if ($this->session->userdata('role_id') == 7) { ?>
-                <div class="sidebar-heading mt-1 text-light">
-                    Admin
-                </div>
-                <li class="nav-item">
-                    <a class="nav-link" href=<?= base_url("home/index") ?>>
-                        <i class="fas fa-envelope-open-text"></i>
-                        <span>Surat Masuk</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href=<?= base_url("surat_diteruskan/index") ?>>
-                        <i class="fas fa-paper-plane"></i>
-                        <span>Riwayat Disposisi</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href=<?= base_url("user/index") ?>>
-                        <i class="fas fa-users"></i>
-                        <span>Pengguna</span></a>
-                </li>
-            <?php } ?>
 
-            <?php if ($this->session->userdata('role_id') == 6) { ?>
-                <hr class="sidebar-divider my-0">
-                <div class="sidebar-heading mt-1 text-light">
-                    Pimpinan
-                </div>
-                <li class="nav-item">
-                    <a class="nav-link" href=<?= base_url("pimpinan/index") ?>>
-                        <i class="fas fa-envelope-open-text"></i>
-                        <span>Surat Masuk</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href=<?= base_url("pimpinan/riwayat") ?>>
-                        <i class="fas fa-mail-bulk"></i>
-                        <span>Riwayat Disposisi</span></a>
-                </li>
-            <?php } ?>
-            <?php if ($this->session->userdata('role_id') == 1) { ?>
-                <hr class="sidebar-divider my-0">
-                <div class="sidebar-heading mt-1 text-light">
-                    Sekretaris
-                </div>
-                <li class="nav-item">
-                    <a class="nav-link" href=<?= base_url("sekertaris/index") ?>>
-                        <i class="fas fa-envelope-open-text"></i>
-                        <span>Surat Masuk</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href=<?= base_url("sekertaris/suratlain") ?>>
-                        <i class="fas fa-envelope"></i>
-                        <span>Surat Masuk Lain</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href=<?= base_url("sekertaris/riwayat") ?>>
-                        <i class="fas fa-mail-bulk"></i>
-                        <span>Riwayat Disposisi</span></a>
-                </li>
-            <?php } ?>
-            <?php if ($this->session->userdata('role_id') == 2) { ?>
-                <hr class="sidebar-divider my-0">
-                <div class="sidebar-heading mt-1 text-light">
-                    Bid. Infrastruktur dan Kewilayahan
-                </div>
-                <li class="nav-item">
-                    <a class="nav-link" href=<?= base_url("bidang2/index") ?>>
-                        <i class="fas fa-bell"></i>
-                        <span>Surat Masuk</span></a>
-                </li>
-            <?php } ?>
-            <?php if ($this->session->userdata('role_id') == 3) { ?>
-                <hr class="sidebar-divider my-0">
-                <div class="sidebar-heading mt-1 text-light">
-                    Bid. Pemerintahan dan Pembangunan Manusia
-                </div>
-                <li class="nav-item">
-                    <a class="nav-link" href=<?= base_url("bidang3/index") ?>>
-                        <i class="fas fa-envelope-open-text"></i>
-                        <span>Surat Masuk</span></a>
-                </li>
-            <?php } ?>
-            <?php if ($this->session->userdata('role_id') == 4) { ?>
-                <hr class="sidebar-divider my-0">
-                <div class="sidebar-heading mt-1 text-light">
-                    Bid. Perencanaan Ekonomi dan Sumber Daya Alam
-                </div>
-                <li class="nav-item">
-                    <a class="nav-link" href=<?= base_url("bidang4/index") ?>>
-                        <i class="fas fa-envelope-open-text"></i>
-                        <span>Surat Masuk</span></a>
-                </li>
-            <?php } ?>
-            <?php if ($this->session->userdata('role_id') == 5) { ?>
-                <hr class="sidebar-divider my-0">
-                <div class="sidebar-heading mt-1 text-light">
-                    Bid. Perencanaan, Pengendalian dan Evaluasi Pembangunan
-                </div>
-                <li class="nav-item">
-                    <a class="nav-link" href=<?= base_url("bidang5/index") ?>>
-                        <i class="fas fa-envelope-open-text"></i>
-                        <span>Surat Masuk</span></a>
-                </li>
-            <?php } ?>
-            <?php if ($this->session->userdata('role_id') == 8) { ?>
-                <hr class="sidebar-divider my-0">
-                <div class="sidebar-heading mt-1 text-light">
-                    Staf Bid. Infrastruktur dan Kewilayahan
-                </div>
-                <li class="nav-item">
-                    <a class="nav-link" href=<?= base_url("staf2/index") ?>>
-                        <i class="fas fa-bell"></i>
-                        <span>Surat Masuk</span></a>
-                </li>
-            <?php } ?>
-            <?php if ($this->session->userdata('role_id') == 9) { ?>
-                <hr class="sidebar-divider my-0">
-                <div class="sidebar-heading mt-1 text-light">
-                    Staf Bid. Pemerintahan dan Pembangunan Manusia
-                </div>
-                <li class="nav-item">
-                    <a class="nav-link" href=<?= base_url("staf3/index") ?>>
-                        <i class="fas fa-bell"></i>
-                        <span>Surat Masuk</span></a>
-                </li>
-            <?php } ?>
-            <?php if ($this->session->userdata('role_id') == 10) { ?>
-                <hr class="sidebar-divider my-0">
-                <div class="sidebar-heading mt-1 text-light">
-                    Staf Bid. Perencanaan Ekonomi dan Sumber Daya Alam
-                </div>
-                <li class="nav-item">
-                    <a class="nav-link" href=<?= base_url("staf4/index") ?>>
-                        <i class="fas fa-bell"></i>
-                        <span>Surat Masuk</span></a>
-                </li>
-            <?php } ?>
-            <?php if ($this->session->userdata('role_id') == 11) { ?>
-                <hr class="sidebar-divider my-0">
-                <div class="sidebar-heading mt-1 text-light">
-                    Staf Bid. Perencanaan, Pengendalian dan Evaluasi Pembangunan
-                </div>
-                <li class="nav-item">
-                    <a class="nav-link" href=<?= base_url("staf5/index") ?>>
-                        <i class="fas fa-bell"></i>
-                        <span>Surat Masuk</span></a>
-                </li>
-            <?php } ?>
-            <?php if ($this->session->userdata('role_id') == 12) { ?>
-                <hr class="sidebar-divider my-0">
-                <div class="sidebar-heading mt-1 text-light">
-                    Staf Sekretaris
-                </div>
-                <li class="nav-item">
-                    <a class="nav-link" href=<?= base_url("staf6/index") ?>>
-                        <i class="fas fa-bell"></i>
-                        <span>Surat Masuk</span></a>
-                </li>
-            <?php } ?>
+            <div class="sidebar-heading mt-1 text-light">
+                Admin
+            </div>
+            <li class="nav-item">
+                <a class="nav-link" href=<?= base_url("home/index") ?>>
+                    <i class="fas fa-envelope-open-text"></i>
+                    <span>Berita</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href=<?= base_url("produk/index") ?>>
+                    <i class="fas fa-paper-plane"></i>
+                    <span>Oleh-Oleh</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href=<?= base_url("member/index") ?>>
+                    <i class="fas fa-users"></i>
+                    <span>Membership</span></a>
+            </li>
+
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
@@ -245,7 +108,7 @@
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $name['name'] ?></span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
                                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                             </a>
                             <!-- Dropdown - User Information -->
